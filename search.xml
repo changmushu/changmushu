@@ -1,59 +1,1519 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>数据结构阶段二复习</title>
-      <link href="/changmushu.github.io/2021/11/18/%E9%98%B6%E6%AE%B5%E4%BA%8C%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0/"/>
-      <url>/changmushu.github.io/2021/11/18/%E9%98%B6%E6%AE%B5%E4%BA%8C%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
-      
-        <content type="html"><![CDATA[<p>​        </p><h1 id="阶段二考试复习"><a href="#阶段二考试复习" class="headerlink" title="阶段二考试复习"></a>阶段二考试复习</h1><p>函数库 </p><pre><code class="c++">#include &lt;stack&gt;stack&lt;int&gt; q;    //stack&lt;类型&gt; 名称q.empty();</code></pre><ol><li>empty(); 堆栈为空，则返回true。</li><li>pop(); 移除栈顶元素。</li><li>push(); 在栈顶增加元素。</li><li>size(); 返回栈中元素数目。</li><li>top(); 返回栈顶元素。</li></ol><pre><code class="c++">#include &lt;queue&gt;queue&lt;int&gt; q;    //queue&lt;类型&gt; 名称q.push;</code></pre><ol><li>empty(); 如果队列空则返回真。</li><li>push(这个里面加入你需要加入的元素或者结构体); 在末尾加入一个元素。</li><li>front(); 返回第一个元素。</li><li>back();返回最后一个元素。</li><li>pop(); 删除第一个元素。</li><li>size(); 返回队列中元素的个数。</li></ol><pre><code class="c++">#include &lt;string&gt;strcpy(a,b);</code></pre><p>将b值复制给a。</p><h2 id="数组、串与广义表"><a href="#数组、串与广义表" class="headerlink" title="数组、串与广义表"></a>数组、串与广义表</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="4198"><a href="#4198" class="headerlink" title="4198"></a>4198</h4><p>![屏幕截图 2021-11-17 184023](屏幕截图 2021-11-17 184023.jpg)</p><pre><code class="c">#include &lt;stdio.h&gt;#include &lt;malloc.h&gt;void LatinMatrix(int **a,int n){    // write your code here    int i,j,p;    for (i=0;i&lt;n;i++) {        p = i + 1;        for (j=0;j&lt;n;j++)        {            a[i][j] = (p-1)%n+1;            p++;        }    }}void PrintMatrix(int **a,int n){    int i,j;    for (i=0;i&lt;n;i++) {        for (j=0;j&lt;n;j++)            printf("%d ", a[i][j]);        printf("\n");    }}int main(){    int n,i;    scanf("%d", &amp;n);    int **array = (long **)malloc(n*sizeof(long));    for (i=0;i&lt;n;i++)        array[i] = (long *)malloc(n*sizeof(long));    LatinMatrix(array,n);    PrintMatrix(array,n);    return 0;}</code></pre><h4 id="4197"><a href="#4197" class="headerlink" title="4197"></a>4197</h4><p>![屏幕截图 2021-11-17 184609](屏幕截图 2021-11-17 184609.jpg)</p><pre><code class="c">#include&lt;stdio.h&gt;int main(){    int n,a[100][100],r,c,i,j;    scanf("%d",&amp;n);    for(i=0;i&lt;n;i++)    {        for(j=0;j&lt;n;j++)          scanf("%d",&amp;a[i][j]);    }    int sum[100]={0};    for(i=0;i&lt;n;i++)    {        for(j=0;j&lt;n;j++)          sum[i]+=a[i][j];    }    for(i=0;i&lt;n;i++)    {        int min;        min=i;        for(j=i+1;j&lt;=n-1;j++)        {            if(sum[j]&lt;sum[min])              min=j;        }//返回sum中最小元素的下标        if(i!=min)        {            //对原数组进行转换            for(c=0;c&lt;n;c++)            {                int temp1;                temp1=a[min][c];                a[min][c]=a[i][c];                a[i][c]=temp1;             }             //对sum进行转换             int temp;             temp=sum[i];             sum[i]=sum[min];             sum[min]=temp;        }    }    for(i=0;i&lt;n;i++)    {        for(j=0;j&lt;n;j++)          printf("%d ",a[i][j]);        printf("\n");    }    return 0;}</code></pre><h3 id="串"><a href="#串" class="headerlink" title="串"></a>串</h3><h4 id="4944"><a href="#4944" class="headerlink" title="4944"></a>4944</h4><p>![屏幕截图 2021-11-17 195311](屏幕截图 2021-11-17 195311.jpg)</p><p>这题主要用BF算法</p><pre><code class="c++">#include&lt;stdio.h&gt;#include&lt;string.h&gt;#include&lt;stdlib.h&gt;#define Maxsize 10typedef struct//定义串{    char ch[Maxsize+1];    int length;}SString;int BF(SString,SString,int);//定义int main(){    SString S,T;int k=0;int a;    scanf("%s",S.ch);    scanf("%s",T.ch);    S.length=strlen(S.ch);//strlen()计数长度    T.length=strlen(T.ch);    scanf("%d",&amp;a);    k=BF(S,T,a);}int BF(SString S,SString T,int pos){    int i,j;    i=pos;    j=0;    while(i&lt;S.length&amp;&amp;j&lt;T.length)    {        if(S.ch[i]==T.ch[j])        {            i++;j++;        }        else        {            i=i-j+1;j=0;        }    }    if(j&gt;T.length-1)        printf("%d",i-T.length);    else        printf("%d",-1);}</code></pre><h4 id="4943"><a href="#4943" class="headerlink" title="4943"></a>4943</h4><p>![屏幕截图 2021-11-17 204725](屏幕截图 2021-11-17 204725.jpg)</p><pre><code class="c++">#include&lt;stdio.h&gt;#include&lt;string.h&gt;#include&lt;stdlib.h&gt;#define Maxsize 10typedef struct//定义串{    char ch[Maxsize+1];    int length;}SString;int BF(SString,SString,SString,int);int main(){    SString S,T,A;int k=0;    scanf("%s",S.ch);    scanf("%s",T.ch);    scanf("%s",A.ch);    S.length=strlen(S.ch);    T.length=strlen(T.ch);    A.length=strlen(A.ch);    k=BF(S,T,A,0);}int BF(SString S,SString T,SString A,int pos){    int i,j,b,c=0;    i=pos;    j=0;    while(i&lt;S.length&amp;&amp;j&lt;T.length)    {        if(S.ch[i]==T.ch[j])        {            i++;j++;        }        else        {            i=i-j+1;j=0;        }    }    if(j&gt;T.length-1)    {   for(b=i-T.length;b&lt;=A.length;b++)        {            S.ch[b]=A.ch[c];            c++;        }         for(int a = 0;a&lt;S.length;a++)         {        printf("%c",S.ch[a]);         }    }    else    {        for(int a = 0;a&lt;S.length;a++)        {        printf("%c",S.ch[a]);        }    }}</code></pre><h4 id="4203"><a href="#4203" class="headerlink" title="4203"></a>4203</h4><p>![屏幕截图 2021-11-17 205716](屏幕截图 2021-11-17 205716.jpg)</p><pre><code class="c">#include&lt;stdio.h&gt;#include&lt;string.h&gt;#define TRUE 1#define FALSE 0typedef int Status;Status isSymmetry(char *a){    // write your code here    int j;int i = 0;    j=strlen(a)-1;    while(i!=j&amp;&amp;i+1!=j)    {        if((a[i])==a[j])        {            i++;j--;        }        else{return FALSE;}    }    return TRUE;}int main(){    char a[20];    gets(a);    char *str = a;    if (isSymmetry(str))        printf("YES\n");    else        printf("NO\n");    return 0;}</code></pre><h4 id="4941"><a href="#4941" class="headerlink" title="4941"></a>4941</h4><p>![屏幕截图 2021-11-17 210059](屏幕截图 2021-11-17 210059.jpg)</p><pre><code class="c">#include&lt;iostream&gt;#include&lt;string.h&gt;#include&lt;stdio.h&gt;#include&lt;stdlib.h&gt;using namespace std;//write your code hereint stringToInt(char *s){    int x;    x=atoi(s);    return x;}int main(){    char a[20],b[20];    cin &gt;&gt; a &gt;&gt; b;    int m = stringToInt(a);    int n = stringToInt(b);    cout &lt;&lt; m+n &lt;&lt; endl;    return 0;}</code></pre><h4 id="4940"><a href="#4940" class="headerlink" title="4940"></a>4940</h4><pre><code class="c++">#include&lt;iostream&gt;#include&lt;string.h&gt;using namespace std;#define defaultSize 128class AString {private:    char *ch;    int curLength;    int maxSize;public:    AString(int sz=defaultSize);    AString(const char *init);    AString(const AString &amp;ob);    ~AString()    {        if (ch!=NULL)            delete []ch;    }    int Length() const { return curLength; }    AString operator()(int pos,int len);    int operator==(AString &amp;ob)const    {        return strcmp(ch,ob.ch)==0;    }    int operator!=(AString &amp;ob) const    {        return strcmp(ch,ob.ch)!=0;    }    int operator!() const    {        return curLength==0;    }    AString &amp;operator=(const AString &amp;ob);    AString &amp;operator+=(const AString &amp;ob);    char operator[](int i);    char *getString() const    {        return this-&gt;ch;    }};AString::AString(int sz){    maxSize = sz;    ch = new char[maxSize+1];    curLength=0;    ch[0]='\0';}AString::AString(const char *init){    int len=strlen(init);    maxSize = (len&gt;defaultSize)?len:defaultSize;    ch = new char[maxSize+1];    curLength = len;    strcpy(ch,init);}AString::AString(const AString &amp;ob){    maxSize = ob.maxSize;    ch = new char[maxSize+1];    curLength = ob.curLength;    strcpy(ch,ob.ch);}AString AString::operator ()(int pos,int len){    AString temp;    if (pos&lt;0||pos+len-1&gt;=maxSize||len&lt;0) {        temp.curLength = 0;        temp.ch[0] = '\0';    }    else {        if (pos+len-1&gt;=curLength)            len = curLength-pos;        temp.curLength = len;        int i,j;        for (i=0,j=pos;i&lt;len;i++,j++)            temp.ch[i] = ch[j];        temp.ch[len] = '\0';    }    return temp;}AString&amp; AString::operator =(const AString &amp;ob){    if (&amp;ob!=this) {        delete []ch;        ch = new char[ob.maxSize];        curLength = ob.curLength;        strcpy(ch,ob.ch);    }    return *this;}AString&amp; AString::operator +=(const AString&amp; ob){    char *temp = ch;    int n = curLength+ob.curLength;    int m = n+1;    ch = new char[m];    maxSize = m;    curLength = n;    int i;    for (i=0;temp[i]!='\0';i++)        ch[i] = temp[i];    int j;    for (j=0;ob.ch[j]!='\0';j++,i++)        ch[i] = ob.ch[j];    ch[i] = '\0';    delete []temp;    return *this;}char AString::operator [](int i){    if (i&lt;0||i&gt;=curLength)        return ' ';    return ch[i];}int main(){    AString str1(20);    str1 = "Hello World!";    AString str2("I am a programmer.");    AString str3(str2);    cout &lt;&lt; str1.Length() &lt;&lt; endl;    if (str2==str3)        str1+=str2;    int i;    for (i=0;i&lt;str1.Length();i++)        cout &lt;&lt; str1[i];    cout &lt;&lt; endl;    str2 = str3(7,20);    cout &lt;&lt; str2[4] &lt;&lt; endl;    return 0;}</code></pre><h4 id="计算字符出现频度"><a href="#计算字符出现频度" class="headerlink" title="计算字符出现频度"></a>计算字符出现频度</h4><pre><code class="c++">void Count(){    for(i=0;i&lt;36;i++) num[i]=0;    while((ch=getchar())!='\0'）          {                      if('0'&lt;=ch&lt;='9')                  {                      i = ch-48;                      num[i]++;                  }                  else if('A'&lt;=ch&lt;='Z')                  {                      i=ch-65+10;                      num[i]++;                  }          }    for(i=0;i&lt;10;i++)          {              cout&lt;&lt;"数字"&lt;&lt;i&lt;&lt;"的个数="&lt;&lt;num[i]&lt;&lt;endl;          }    for(i=10;i&lt;36;i++)          {              cout&lt;&lt;"字母字符"&lt;&lt;char(i+55)&lt;&lt;"的个数="&lt;&lt;num[i]&lt;&lt;endl;          }}</code></pre><h4 id="字符串逆序存储"><a href="#字符串逆序存储" class="headerlink" title="字符串逆序存储"></a>字符串逆序存储</h4><pre><code class="c++">void Inverse(char A[]){//递归实现字符串的逆序存储    static int i = 0;        //静态变量记录字符数组的下标    cin&gt;&gt;ch;    if(ch!='.')            //'.'是字符串输入结束标志    {        Inverse(A);        //递归        A[i++]=ch;        //递归返回后存储字符串    }    A[i]='\0';            //字符串最后加上结尾标记}</code></pre><h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><h4 id="4976"><a href="#4976" class="headerlink" title="4976"></a>4976</h4><p>![屏幕截图 2021-11-17 213236](屏幕截图 2021-11-17 213236.jpg)</p><pre><code class="c++">#include&lt;iostream&gt;#include&lt;stdlib.h&gt;using namespace std;struct TreeNode {    int data;    TreeNode *leftChild,*rightChild;    TreeNode()    {        leftChild = NULL;        rightChild = NULL;    }};class BinaryTree {protected:    TreeNode *root;    void copy(TreeNode *&amp;target,TreeNode *origin);    void create(TreeNode *&amp;root,const int *a,int i,const int l);    void destroy(TreeNode *&amp;root);    TreeNode *parent(TreeNode* root,TreeNode *current);    void exchangeLRsubTree(TreeNode *root);public:    BinaryTree() { root=NULL; }    ~BinaryTree() { destroy(root); }    void Create(BinaryTree *&amp;bt,const int *a,int i,const int l);    TreeNode *getRoot() { return root; }    void preOrder(TreeNode *root);    TreeNode *Parent(TreeNode *current);    void exchangeLRsubTree();};void BinaryTree::create(TreeNode *&amp;root,const int *a,int i,const int l){    if (i&gt;=l)        return;    if (a[i]==0) {        root = NULL;        return;    }    else {        root = new TreeNode();        root-&gt;data = a[i];        create(root-&gt;leftChild,a,i*2+1,l);        create(root-&gt;rightChild,a,i*2+2,l);    }}void BinaryTree::Create(BinaryTree *&amp;bt,const int *a,int i,const int l){    this-&gt;create(bt-&gt;root,a,i,l);}TreeNode* BinaryTree::Parent(TreeNode *current){    if (current==NULL||current==root)        return NULL;    return this-&gt;parent(this-&gt;root,current);}void BinaryTree::destroy(TreeNode *&amp;root){    if (root-&gt;leftChild!=NULL)        destroy(root-&gt;leftChild);    if (root-&gt;rightChild!=NULL)        destroy(root-&gt;rightChild);    delete root;    root = NULL;}TreeNode* BinaryTree::parent(TreeNode* root,TreeNode *current){    if (root==NULL)        return NULL;    if (root-&gt;leftChild==current||root-&gt;rightChild==current)        return root;    else return (parent(root-&gt;leftChild,current)==NULL)?parent(root-&gt;rightChild,current):parent(root-&gt;leftChild,current);}void BinaryTree::preOrder(TreeNode *root){    if (root!=NULL)    {        cout &lt;&lt; root-&gt;data &lt;&lt; " ";        preOrder(root-&gt;leftChild);        preOrder(root-&gt;rightChild);    }}void BinaryTree::exchangeLRsubTree(){    this-&gt;exchangeLRsubTree(this-&gt;root);}void BinaryTree::exchangeLRsubTree(TreeNode *root){    // write your code here     // write your code here    TreeNode *temp;    if(root==NULL) return;    if(root-&gt;leftChild==NULL&amp;&amp;root-&gt;rightChild==NULL)        return;    else    {        temp=root-&gt;leftChild;        root-&gt;leftChild=root-&gt;rightChild;        root-&gt;rightChild=temp;    }    exchangeLRsubTree(root-&gt;leftChild);    exchangeLRsubTree(root-&gt;rightChild);}int main(){    int length = 10;    cin &gt;&gt; length;    int *a = new int[length];    int i;    for (i=0;i&lt;length;i++)        cin &gt;&gt; a[i];    BinaryTree *bt = new BinaryTree();    bt-&gt;Create(bt,a,0,length);    bt-&gt;exchangeLRsubTree();    bt-&gt;preOrder(bt-&gt;getRoot());    return 0;}</code></pre><h4 id="6111"><a href="#6111" class="headerlink" title="6111"></a>6111</h4><p>![屏幕截图 2021-11-18 103227](屏幕截图 2021-11-18 103227.jpg)</p><pre><code class="c++">#include&lt;iostream&gt;using namespace std;#define MAXSIZE 30typedef struct BiTNode{    char data;    struct BiTNode *lchild,*rchild;}BiTNode,*BiTree;;void Creat(BiTNode *&amp;T){   //先序建立二叉树 ，存放表达式    char ch;    cin&gt;&gt;ch;    if(ch == '*')T = NULL;    else{        T = new BiTNode;        T-&gt;data = ch;        Creat(T-&gt;lchild);        Creat(T-&gt;rchild);    }}bool PrintAncestors(BiTree T,int x){    if(!T) return false;    if (T-&gt;data == x) return true;    if (PrintAncestors(T-&gt;lchild, x) || PrintAncestors(T-&gt;rchild, x))    {        cout &lt;&lt; T-&gt;data &lt;&lt; " ";        return true;    }    return false;}void InOrderTraverse(BiTree T,int x,int &amp;tag){    if(T)    {        if(T-&gt;data==x){tag=1;}        InOrderTraverse(T-&gt;lchild,x,tag);        InOrderTraverse(T-&gt;rchild,x,tag);    }}int main(){    char x;int tag = 0;    BiTNode *tree;    char expression[MAXSIZE];    char path[MAXSIZE];    Creat(tree);    cin&gt;&gt;x;    InOrderTraverse(tree,x,tag);    if(tree-&gt;data==x)    {        printf("没有祖先结点");    }else if(tag==0)    {        printf("%c不存在",x);    }else    {        PrintAncestors(tree,x);    }}</code></pre><h4 id="7075"><a href="#7075" class="headerlink" title="7075"></a>7075</h4><p>前中后序遍历改输出的位置即可。</p><p>![屏幕截图 2021-11-18 165313](屏幕截图 2021-11-18 165313.jpg)</p><pre><code class="c++">#include&lt;iostream&gt;using namespace std;#define MAXSIZE 30typedef struct BiTNode{    char data;    struct BiTNode *lchild,*rchild;}BiTNode,*BiTree;;void Creat(BiTNode *&amp;T){   //先序建立二叉树 ，存放表达式    char ch;    cin&gt;&gt;ch;    if(ch == '@')T = NULL;    else{        T = new BiTNode;        T-&gt;data = ch;        Creat(T-&gt;lchild);        Creat(T-&gt;rchild);    }}void InOrderTraverse(BiTree T){    if(T)    {        InOrderTraverse(T-&gt;lchild);        InOrderTraverse(T-&gt;rchild);        cout&lt;&lt;T-&gt;data;    }}int main(){    BiTNode *tree;    char expression[MAXSIZE];    char path[MAXSIZE];    Creat(tree);    InOrderTraverse(tree);}</code></pre><h4 id="7077"><a href="#7077" class="headerlink" title="7077"></a>7077</h4><p>层次遍历</p><pre><code class="c++">#include&lt;bits/stdc++.h&gt;using namespace std;typedef struct BinNode{    char data;    struct BinNode *left;    struct BinNode *right;}BinNode,*BinTree;#define MAXSIZE 1024typedef struct{    BinTree data[MAXSIZE];    int front,rear;}SeQueue;void QueueInit(SeQueue &amp;Q){    Q.front=0;Q.rear=0;}void QueuePush(SeQueue &amp;Q,BinTree x){    Q.data[Q.rear]=x;    Q.rear=(Q.rear+1)%MAXSIZE;}void GetHead(SeQueue Q,BinTree &amp;x){    x=Q.data[Q.front];}bool QueueEmpty(SeQueue Q){    if(Q.front==Q.rear)return 1;    return 0;}void QueuePop(SeQueue &amp;Q,BinTree &amp;x){    x=Q.data[Q.front];    Q.front=(Q.front+1)%MAXSIZE;}void CreateBinTree(BinTree &amp;T){    char ch;cin&gt;&gt;ch;    if(ch=='@')T=NULL;    else{        T=new BinNode;        T-&gt;data=ch;        CreateBinTree(T-&gt;left);        CreateBinTree(T-&gt;right);    }}void BfsTree(BinTree T){    SeQueue Q;QueueInit(Q);    QueuePush(Q,T);    while(!QueueEmpty(Q)){        BinTree output;        output=new BinNode;        QueuePop(Q,output);        cout&lt;&lt;output-&gt;data;        if(output-&gt;left!=NULL)QueuePush(Q,output-&gt;left);        if(output-&gt;right!=NULL)QueuePush(Q,output-&gt;right);    }}int main(){    BinTree T;    CreateBinTree(T);    BfsTree(T);    return 0;}</code></pre><h4 id="7076"><a href="#7076" class="headerlink" title="7076"></a>7076</h4><p>输出叶子结点个数</p><pre><code class="c++">#include&lt;iostream&gt;using namespace std;#define MAXSIZE 30typedef struct BiTNode{    char data;    struct BiTNode *lchild,*rchild;}BiTNode,*BiTree;;void Creat(BiTNode *&amp;T){   //先序建立二叉树 ，存放表达式    char ch;    cin&gt;&gt;ch;    if(ch == '@')T = NULL;    else{        T = new BiTNode;        T-&gt;data = ch;        Creat(T-&gt;lchild);        Creat(T-&gt;rchild);    }}int LeafCount(BiTree T){    if(T==NULL) return 0;    else    {        if((!T-&gt;lchild)&amp;&amp;(!T-&gt;rchild))            return 1;        else            return LeafCount(T-&gt;lchild)+LeafCount(T-&gt;rchild);    }}int main(){    BiTNode *tree;    char expression[MAXSIZE];    char path[MAXSIZE];    Creat(tree);    cout&lt;&lt;LeafCount(tree);}</code></pre><h4 id="7074"><a href="#7074" class="headerlink" title="7074"></a>7074</h4><p>输出二叉树高度</p><pre><code class="c++">#include&lt;iostream&gt;using namespace std;#define MAXSIZE 30typedef struct BiTNode{    char data;    struct BiTNode *lchild,*rchild;}BiTNode,*BiTree;;void Creat(BiTNode *&amp;T){   //先序建立二叉树 ，存放表达式     char ch;    cin&gt;&gt;ch;    if(ch == '@')T = NULL;    else{        T = new BiTNode;        T-&gt;data = ch;        Creat(T-&gt;lchild);        Creat(T-&gt;rchild);    }}int Depth(BiTree T){    int m,n;    if(T==NULL) return 0;    else{        m=Depth(T-&gt;lchild);        n=Depth(T-&gt;rchild);        if(m&gt;n) return(m+1);        else return(n+1);    }}int main(){    BiTNode *tree;    char expression[MAXSIZE];     char path[MAXSIZE];    Creat(tree);    cout&lt;&lt;Depth(tree);}</code></pre><h4 id="7080"><a href="#7080" class="headerlink" title="7080"></a>7080</h4><p>![屏幕截图 2021-11-18 165848](屏幕截图 2021-11-18 165848.jpg)</p><pre><code class="c++">#include&lt;stdlib.h&gt;#include&lt;stdio.h&gt;#include&lt;string.h&gt;#include&lt;math.h&gt;#include&lt;stdbool.h&gt;#include&lt;iostream&gt;using namespace std;typedef struct BinNode{    char data;    struct BinNode *left;    struct BinNode *right;}BinNode,*BinTree;void CreateBinTree(BinTree &amp;T){    char ch;cin&gt;&gt;ch;    if(ch=='@')T=NULL;    else{        T=new BinNode;        T-&gt;data=ch;        CreateBinTree(T-&gt;left);        CreateBinTree(T-&gt;right);    }}int CountLeaf(BinTree T){    int res=0;    if(T==NULL)return 0;    if(T-&gt;left==NULL)return 1+CountLeaf(T-&gt;right);    else return CountLeaf(T-&gt;left)+CountLeaf(T-&gt;right);}int main(){    BinTree T;    CreateBinTree(T);    printf("%d",CountLeaf(T));    return 0;}</code></pre><h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><h4 id="7039-有向图"><a href="#7039-有向图" class="headerlink" title="7039(有向图)"></a>7039(有向图)</h4><p>![屏幕截图 2021-11-18 125414](屏幕截图 2021-11-18 125414.jpg)</p><pre><code class="c++">#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;queue&gt;using namespace std;const int MAXNum=100;typedef struct ArcNode              //边结点{    int adjvex;                     //该边所指向的顶点的位置    struct ArcNode * nextarc;       //指向下一条边的指针}ArcNode;typedef struct VNode                //顶点信息{    int data;    ArcNode *firstarc;              //指向第一条依附该顶点的边的指针}VNode,AdjList[MAXNum];             //AdjList表示邻接表的类型typedef struct                      //邻接表{    AdjList verlist;    int vexnum,arcnum;              //图的当前顶点数和边数}Graph;void CreateUDG(Graph &amp;G){                                   //采用邻接表表示法，创建有向图G    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;    for(int i = 1;i&lt;=G.vexnum;i++)    {        cin&gt;&gt;G.verlist[i].data;        G.verlist[i].firstarc=NULL;    }    for(int i = 1;i&lt;=G.arcnum;i++)    {        int x,y;cin&gt;&gt;x&gt;&gt;y;        ArcNode * p1 = new ArcNode;        p1-&gt;adjvex = y;        p1-&gt;nextarc = G.verlist[x].firstarc;        G.verlist[x].firstarc=p1;    }}void Print(Graph G){    for(int i = 1;i&lt;=G.vexnum;i++)    {        ArcNode* p = G.verlist[i].firstarc;        cout&lt;&lt;i&lt;&lt;":";        while(p!=NULL){            cout&lt;&lt;p-&gt;adjvex;            if(p-&gt;nextarc!=NULL)cout&lt;&lt;" ";            p=p-&gt;nextarc;        }        cout&lt;&lt;endl;    }}bool vis[MAXNum];void DFS(Graph G,int u){    ArcNode* p=G.verlist[u].firstarc;    vis[u]=true;    cout&lt;&lt;u&lt;&lt;" ";    while(p!=NULL)    {        if(!vis[p-&gt;adjvex])        {            DFS(G,p-&gt;adjvex);        }        p=p-&gt;nextarc;    }}int main(){    Graph G;    CreateUDG(G);    Print(G);    DFS(G,1);    return 0;}</code></pre><h4 id="7040-有向图"><a href="#7040-有向图" class="headerlink" title="7040(有向图)"></a>7040(有向图)</h4><p>![屏幕截图 2021-11-18 133703](屏幕截图 2021-11-18 133703.jpg)</p><pre><code class="c++">#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;queue&gt;using namespace std;const int MAXNum=100;typedef struct ArcNode              //边结点{    int adjvex;                     //该边所指向的顶点的位置    struct ArcNode * nextarc;       //指向下一条边的指针}ArcNode;typedef struct VNode                //顶点信息{    int data;    ArcNode *firstarc;              //指向第一条依附该顶点的边的指针}VNode,AdjList[MAXNum];             //AdjList表示邻接表的类型typedef struct                      //邻接表{    AdjList verlist;    int vexnum,arcnum;              //图的当前顶点数和边数}Graph;void CreateUDG(Graph &amp;G){                                   //采用邻接表表示法，创建有向图G    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;    for(int i = 1;i&lt;=G.vexnum;i++)    {        cin&gt;&gt;G.verlist[i].data;        G.verlist[i].firstarc=NULL;    }    for(int i = 1;i&lt;=G.arcnum;i++)    {        int x,y;cin&gt;&gt;x&gt;&gt;y;        ArcNode * p1 = new ArcNode;        p1-&gt;adjvex = y;        p1-&gt;nextarc = G.verlist[x].firstarc;        G.verlist[x].firstarc=p1;    }}int in[MAXNum],out[MAXNum];void TD(Graph G){    for(int i = 1;i&lt;=G.vexnum;i++)    {        ArcNode* p = G.verlist[i].firstarc;        while(p!=NULL)        {            in[p-&gt;adjvex]++;            out[i]++;            p=p-&gt;nextarc;        }    }}int main(){    Graph G;    CreateUDG(G);    TD(G);    for(int i=1;i&lt;=G.vexnum;i++){        cout&lt;&lt;i&lt;&lt;":"&lt;&lt;in[i]&lt;&lt;" "&lt;&lt;out[i]&lt;&lt;" "&lt;&lt;in[i]+out[i]&lt;&lt;endl;    }    return 0;}</code></pre><h4 id="7042-无向图"><a href="#7042-无向图" class="headerlink" title="7042(无向图)"></a>7042(无向图)</h4><p>![屏幕截图 2021-11-18 151633](屏幕截图 2021-11-18 151633.jpg)</p><pre><code class="c++">#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;stack&gt;using namespace std;const int MAXNum=105;typedef struct ArcNode              //边结点{    int adjvex;                     //该边所指向的顶点的位置    struct ArcNode * nextarc;       //指向下一条边的指针}ArcNode;typedef struct VNode                //顶点信息{    int data;    ArcNode *firstarc;              //指向第一条依附该顶点的边的指针}VNode,AdjList[MAXNum];             //AdjList表示邻接表的类型typedef struct                      //邻接表{    AdjList verlist;    int vexnum,arcnum;              //图的当前顶点数和边数}Graph;void CreateUDG(Graph &amp;G){                                   //采用邻接表表示法，创建有向图G    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;    for(int i = 1;i&lt;=G.vexnum;i++)    {        cin&gt;&gt;G.verlist[i].data;        G.verlist[i].firstarc=NULL;    }    for(int i = 1;i&lt;=G.arcnum;i++)    {        int x,y;cin&gt;&gt;x&gt;&gt;y;        ArcNode * p1 = new ArcNode;        ArcNode * p2 = new ArcNode;        p1-&gt;adjvex = y;        p1-&gt;nextarc = G.verlist[x].firstarc;        G.verlist[x].firstarc=p1;        p2-&gt;adjvex = x;        p2-&gt;nextarc = G.verlist[y].firstarc;        G.verlist[y].firstarc=p2;    }}/*递归bool visited[MAXNum];void DFS(Graph G,int v){    cout&lt;&lt;"v"&lt;&lt;v&lt;&lt;" ";visited[v]=true;    ArcNode * p = G.verlist[v].firstarc;    while(p!=NULL)    {        if(!visited[p-&gt;adjvex]){DFS(G,p-&gt;adjvex);}        p = p-&gt;nextarc;    }}*/bool visited[MAXNum];void DFS(Graph G,int v)        //非递归{    stack&lt;int&gt;q;    q.push(v);visited[v]=true;    cout&lt;&lt;"v1 ";    while(!q.empty())    {        int t=q.top();        ArcNode *p=G.verlist[t].firstarc;        while(p&amp;&amp;visited[p-&gt;adjvex])        {            p=p-&gt;nextarc;        }        while(p&amp;&amp;!visited[p-&gt;adjvex])        {            cout&lt;&lt;"v"&lt;&lt;p-&gt;adjvex&lt;&lt;" ";            visited[p-&gt;adjvex]=true;            q.push(p-&gt;adjvex);            p=G.verlist[p-&gt;adjvex].firstarc;        }        if(p==NULL){q.pop();}    }}int main(){    Graph G;    CreateUDG(G);    DFS(G,1);    return 0;}</code></pre><h4 id="╳7043-无向图的建立与遍历）"><a href="#╳7043-无向图的建立与遍历）" class="headerlink" title="╳7043(无向图的建立与遍历）"></a>╳7043(无向图的建立与遍历）</h4><p>![屏幕截图 2021-11-18 153324](屏幕截图 2021-11-18 153324.jpg)</p><pre><code class="c++">#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;queue&gt;#include&lt;stack&gt;using namespace std;const int MAXNum=100;typedef struct ArcNode              //边结点{    int adjvex;                     //该边所指向的顶点的位置    struct ArcNode * nextarc;//指向下一条边的指针    //OtherInfo info；            //和边相关的信息}ArcNode;typedef struct VNode                //顶点信息{    int data;    ArcNode *firstarc;              //指向第一条依附该顶点的边的指针}VNode,AdjList[MAXNum];             //AdjList表示邻接表的类型typedef struct                      //邻接表{    AdjList verlist;    int vexnum,arcnum;              //图的当前顶点数和边数}Graph;int LocateVex(Graph G,char v){    for(int i = 1;i&lt;G.vexnum;i++)    {        if(G.verlist[i].data==v)        {            return i;        }    }}void CreateUDG(Graph &amp;G){                                   //采用邻接表表示法，创建无向图G    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;        //输入各点，构造表头结点表    for(int i = 1;i&lt;=G.vexnum;i++)    {        cin&gt;&gt;G.verlist[i].data;        //输入顶点值        G.verlist[i].firstarc=NULL;    //初始化表头结点的指针域为NULL    }    for(int i = 1;i&lt;=G.arcnum;i++)    //输入各边，构造邻接表    {        int v1,v2;cin&gt;&gt;v1&gt;&gt;v2;        //输入一条边依附的两个顶点        int a,b;        a = LocateVex(G,v1);b = LocateVex(G,v2);        ArcNode * p1 = new ArcNode;        ArcNode * p2 = new ArcNode;        p1-&gt;adjvex = b;        p1-&gt;nextarc = G.verlist[a].firstarc;        G.verlist[a].firstarc=p1;        p2-&gt;adjvex = a;        p2-&gt;nextarc = G.verlist[b].firstarc;        G.verlist[b].firstarc=p2;    }}/*递归bool visited[MAXNum];void DFS(Graph G,int v){    cout&lt;&lt;"v"&lt;&lt;v&lt;&lt;" ";visited[v]=true;    ArcNode * p = G.verlist[v].firstarc;    while(p!=NULL)    {        if(!visited[p-&gt;adjvex]){DFS(G,p-&gt;adjvex);}        p = p-&gt;nextarc;    }}*//*非递归bool visited[MAXNum];void DFS(Graph G,int v){    stack&lt;int&gt;q;    q.push(v);visited[v]=true;    cout&lt;&lt;"v1 ";    while(!q.empty())    {        int t=q.top();        ArcNode *p=G.verlist[t].firstarc;        while(p&amp;&amp;visited[p-&gt;adjvex])        {            p=p-&gt;nextarc;        }        while(p&amp;&amp;!visited[p-&gt;adjvex])        {            cout&lt;&lt;"v"&lt;&lt;p-&gt;adjvex&lt;&lt;" ";            visited[p-&gt;adjvex]=true;            q.push(p-&gt;adjvex);            p=G.verlist[p-&gt;adjvex].firstarc;        }        if(p==NULL){q.pop();}    }}*/bool visited[MAXNum];void BFS(Graph G){    queue&lt;int&gt; q;    cout&lt;&lt;"v1 ";    q.push(1);    visited[1]=true;    while(!q.empty())    {        int u = q.front();q.pop();        ArcNode* p = G.verlist[u].firstarc;        while(p!=NULL)        {            if(!visited[p-&gt;adjvex])            {                cout&lt;&lt;"v"&lt;&lt;p-&gt;adjvex&lt;&lt;" ";                visited[p-&gt;adjvex]=true;                q.push(p-&gt;adjvex);            }            p=p-&gt;nextarc;        }    }}int main(){    Graph G;    CreateUDG(G);    BFS(G);    return 0;}</code></pre><h4 id="6112-有向图"><a href="#6112-有向图" class="headerlink" title="6112(有向图)"></a>6112(有向图)</h4><p>![屏幕截图 2021-11-18 180909](屏幕截图 2021-11-18 180909.jpg)</p><pre><code class="c++">#include&lt;iostream&gt;#include&lt;cstring&gt;#include&lt;queue&gt;using namespace std;const int MAXNum=100;typedef struct ArcNode              //边结点{    int adjvex;                     //该边所指向的顶点的位置    struct ArcNode * nextarc;       //指向下一条边的指针}ArcNode;typedef struct VNode                //顶点信息{    int data;    ArcNode *firstarc;              //指向第一条依附该顶点的边的指针}VNode,AdjList[MAXNum];             //AdjList表示邻接表的类型typedef struct                      //邻接表{    AdjList verlist;    int vexnum,arcnum;              //图的当前顶点数和边数}Graph;void CreateUDG(Graph &amp;G){                                   //采用邻接表表示法，创建有向图G    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;    for(int i = 1;i&lt;=G.vexnum;i++)    {        G.verlist[i].data=i;        G.verlist[i].firstarc=NULL;    }    for(int i = 1;i&lt;=G.arcnum;i++)    {        char m;        int x,y;cin&gt;&gt;x&gt;&gt;m&gt;&gt;y;        ArcNode * p1 = new ArcNode;        p1-&gt;adjvex = y;        p1-&gt;nextarc = G.verlist[x].firstarc;        G.verlist[x].firstarc=p1;    }}bool vis[MAXNum];bool DFS(Graph G,int i,int j){    if(i==j)return true;    ArcNode* p=G.verlist[i].firstarc;    vis[i]=true;    while(p!=NULL)    {        if(!vis[p-&gt;adjvex] &amp;&amp; DFS(G,p-&gt;adjvex,j))        {           return true;        }        p=p-&gt;nextarc;    }    return false;}int main(){    int tag1 = 1;int tag0 = 0;    int i,j;    Graph G;    CreateUDG(G);    cin&gt;&gt;i&gt;&gt;j;    if(DFS(G,i,j))    {        cout&lt;&lt;1;    }else    {        cout&lt;&lt;0;    }    return 0;}</code></pre><h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><h4 id="╳邻接矩阵的建立与遍历"><a href="#╳邻接矩阵的建立与遍历" class="headerlink" title="╳邻接矩阵的建立与遍历"></a>╳邻接矩阵的建立与遍历</h4><pre><code class="c++">#include&lt;iostream&gt;#include&lt;stdio.h&gt;#include&lt;cstring&gt;using namespace std;#define MaxInt 32767        //表示极大值#define MVNum 100            //最大顶点数typedef char VerTexType;    //假设顶点的数据类型为字符型typedef int ArcType;        //假设边的权值类型为整数typedef struct{    VerTexType vexs[MVNum];    //顶点表    ArcType arcs[MVNum][MVNum];    //邻接矩阵    int vexnum,arcnum;        //图的当前点数和边数}AMGraph;int LocateVex(AMGraph G,char v){    for(int i = 1;i&lt;G.vexnum;i++)    {        if(G.vexs[i]==v)        {            return i;        }    }}void CreateUDN(AMGraph &amp;G){//采用邻接矩阵表示法，创建无向图    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;                    //输入总顶点数，总边数    for(int i = 1;i&lt;=G.vexnum;i++)               //依次输入点的信息    {        cin&gt;&gt;G.vexs[i];    }    for(int i = 1;i&lt;=G.vexnum;i++)               //初始化邻接矩阵，边的权值为极大值    {        for(int j = 1;j&lt;=G.vexnum;j++)        {            G.arcs[i][j] = 0;//G.arcs[i][j] = MaxInt;        }    }    for(int k = 1;k&lt;=G.arcnum;k++)               //构造邻接矩阵    {        char v1,v2;//int w;                       //输入一条边依附的顶点及权值        cin&gt;&gt;v1&gt;&gt;v2;//cin&gt;&gt;w;        int i,j;        i = LocateVex(G,v1);j = LocateVex(G,v2);//确定v1和v2在G中的位置，即顶点数组的下标        G.arcs[i][j] = 1;                       //边&lt;v1,v2&gt;权值为0        G.arcs[j][i] = G.arcs[i][j];            //置&lt;v1,v2&gt;的对称边&lt;v2,v1&gt;的权值为0，有向图删此条代码    }}bool visited[MVNum];void DFS_AM(AMGraph G,int v){//图G为邻接矩阵类型，从第v个顶点出发深度优先搜索遍历图G    cout&lt;&lt;v&lt;&lt;" ";visited[v] = true;                //访问第v个顶点，并置访问标志数组相应分量值为true    for(int w = 1;w&lt;=G.vexnum;w++)                //依次检查邻接矩阵v所在的行    {        if((G.arcs[v][w]!=0)&amp;&amp;(!visited[w]))        {            DFS_AM(G,w);        }    }}int main(){    AMGraph G;    CreateUDN(G);    for(int i = 1;i&lt;=G.vexnum;i++)    {        cout&lt;&lt;"\n";        for(int j = 1;j&lt;=G.vexnum;j++)        {            cout&lt;&lt;G.arcs[i][j]&lt;&lt;" ";        }    }    cout&lt;&lt;"\n";    DFS_AM(G,1);    return 0;}</code></pre><p>​        若要建立无向网，只需对上述算法做两处小的改动：一是初始化邻接矩阵时，将边的权值改为MaxInt；二是构造邻接矩阵时，将权值w输入。</p><p>​        若要建立有向图，则不需要建立对称矩阵。</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Olympus35-S</title>
-      <link href="/changmushu.github.io/2021/10/03/Olympus35-S/"/>
-      <url>/changmushu.github.io/2021/10/03/Olympus35-S/</url>
-      
-        <content type="html"><![CDATA[<p>​        </p><h1 id="一、购入"><a href="#一、购入" class="headerlink" title="一、购入"></a>一、购入</h1><p>​        九月底在某海鲜市场购得了奥林巴斯35-S，当时看上它并不是因为它多好看，但在到手后古朴的金属质感和机械发条的扭转瞬间让我着迷。网上资料不多，所以我打算写一条关于它的Blog。</p><p><img src="DSC_4805.jpg" alt="DSC_4805"></p><h1 id="二、关于Olympus"><a href="#二、关于Olympus" class="headerlink" title="二、关于Olympus"></a>二、关于Olympus</h1><h2 id="（一）基础简介"><a href="#（一）基础简介" class="headerlink" title="（一）基础简介"></a>（一）基础简介</h2><p>​        Olympus35-S于1955年推出，是第一款提供快速倒带杆的日本相机。它首先配备了D.Zuiko 45mm f/3.5镜头。较晚的型号有E.Zuiko 48mm f/2.8或G. Zuiko 45mm f/1.9。而我手上拿到的是G. Zuiko 42mm f/2.0。它配备了Seikosha-MX 的快门</p><p><img src="DSC_4810.jpg" alt="DSC_4810"></p><h3 id="1-Seikosha-MX"><a href="#1-Seikosha-MX" class="headerlink" title="1.Seikosha-MX"></a>1.Seikosha-MX</h3><p>​    <em>The Seikosha-MX is a leaf shutter made by Seikōsha, the manufacturing branch of Hattori Tokei-ten. It is an evolution of the Seikosha-Rapid, with added MX synchronization. It appeared in 1955 in #00 size and in 1956 in #00 size.</em></p><p>​    <em>The <strong>Seikosha-MXL</strong> is a variant equipped with the light value system, introduced in 1956 in #00 sizeonly.</em></p><p>​        目前只有B，1，2，5，10，25，50，100，200，500的快门速度。</p><p><img src="DSC_4807.jpg" alt="DSC_4807"></p><h2 id="（二）时代背景"><a href="#（二）时代背景" class="headerlink" title="（二）时代背景"></a>（二）时代背景</h2><p>​        第一个奥林巴斯35-S于1955年推出。日本相机业从少年时期走向成熟，生产出与西德同等质量的相机，并超过了这一时期。</p><p>​    <em>A basic rangefinder, no fireworks, nice to hold and use. Controls are on the lens barrel, leaving the top bare. So-so lens, yet perfect for the casual user. On the bottom of the barrel is the external sync port, by the mode selector. Smallish finder, dim. Spool rewind crank pops out by pushing a tiny slide, assume to save user’s fingernails.</em></p><h2 id="（三）使用感受"><a href="#（三）使用感受" class="headerlink" title="（三）使用感受"></a>（三）使用感受</h2><p>​        基础的测距，全金属质感，拿着很舒服，快门都是在镜头上控制。但由于时间过于久远，相机的黄斑已经黯淡，为了能保证对焦，我在取景器前安装了一片蓝色透片。黄斑一下清晰明了了起来。</p><p><img src="DSC_4806.jpg" alt="DSC_4806"></p><p><img src="DSC_4812.jpg" alt="DSC_4812"></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>昶沐沭</title>
-      <link href="/changmushu.github.io/2021/09/30/%E6%98%B6%E6%B2%90%E6%B2%AD/"/>
-      <url>/changmushu.github.io/2021/09/30/%E6%98%B6%E6%B2%90%E6%B2%AD/</url>
-      
-        <content type="html"><![CDATA[<p>​        在2021年9月30日晚11点，我大致完成了自己的博客的建立，但其中还有许多无法解决的，亦或是我现在没有精力去解决的问题。但至此已经心满意足，有一种自己慢慢制作小玩意的满足，并且满怀着信心想要去完善她，把她作为自己独立的一部分，情绪的一部分，在互联网之中漂流。</p><p><img src="DSC_4158.jpg" alt="DSC_4158"></p><p>​        这里上传自己最近拍的一张照片，本是无意拍花的影子，但一放到<em>PhotoShop</em>里面，就想着它会不会有其它不一样的变化。有鲜红的感觉，有强烈的命令感。</p><p>​        一到气温下降的时候总会想到一个场景，在景中的走廊里，穿着蓝色棉服，坐在那儿看书或者睡觉，暖和到恰到好处的太阳使得一切变得奇幻而不真实，像是在梦境一般。</p><p>​        反之哈尔滨的冬天也只有室内才能感受到这种阳光，白晃晃的世界以及凛冽的寒风，回想着快要逃离，无奈吧，徘徊吧。</p><p>​        第一次写也不知道写些啥，毕竟能找到这个<em>Blog</em>的人应该很少吧。</p><p>​        这是在某个B站UP主的视频下看到的，令人无限唏嘘，或许这就是现实吧。</p><p>​        <u>“后来我会拥有更高超的演奏技巧，会见到更多更亮更圆的月亮，可是那一夜青涩的真诚与热枕再也没有回来。”</u></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/changmushu.github.io/2021/09/29/hello-world/"/>
-      <url>/changmushu.github.io/2021/09/29/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new "My New Post"</code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-  
-  
+<search>
+  <entry>
+    <title>Olympus35-S</title>
+    <url>/changmushu.github.io/2021/10/03/Olympus35-S/</url>
+    <content><![CDATA[<p>​        </p>
+<h1 id="一、购入"><a href="#一、购入" class="headerlink" title="一、购入"></a>一、购入</h1><p>​        九月底在某海鲜市场购得了奥林巴斯35-S，当时看上它并不是因为它多好看，但在到手后古朴的金属质感和机械发条的扭转瞬间让我着迷。网上资料不多，所以我打算写一条关于它的Blog。</p>
+<p><img src="DSC_4805.jpg" alt="DSC_4805"></p>
+<h1 id="二、关于Olympus"><a href="#二、关于Olympus" class="headerlink" title="二、关于Olympus"></a>二、关于Olympus</h1><h2 id="（一）基础简介"><a href="#（一）基础简介" class="headerlink" title="（一）基础简介"></a>（一）基础简介</h2><p>​        Olympus35-S于1955年推出，是第一款提供快速倒带杆的日本相机。它首先配备了D.Zuiko 45mm f/3.5镜头。较晚的型号有E.Zuiko 48mm f/2.8或G. Zuiko 45mm f/1.9。而我手上拿到的是G. Zuiko 42mm f/2.0。它配备了Seikosha-MX 的快门</p>
+<p><img src="DSC_4810.jpg" alt="DSC_4810"></p>
+<h3 id="1-Seikosha-MX"><a href="#1-Seikosha-MX" class="headerlink" title="1.Seikosha-MX"></a>1.Seikosha-MX</h3><p>​    <em>The Seikosha-MX is a leaf shutter made by Seikōsha, the manufacturing branch of Hattori Tokei-ten. It is an evolution of the Seikosha-Rapid, with added MX synchronization. It appeared in 1955 in #00 size and in 1956 in #00 size.</em></p>
+<p>​    <em>The <strong>Seikosha-MXL</strong> is a variant equipped with the light value system, introduced in 1956 in #00 sizeonly.</em></p>
+<p>​        目前只有B，1，2，5，10，25，50，100，200，500的快门速度。</p>
+<p><img src="DSC_4807.jpg" alt="DSC_4807"></p>
+<h2 id="（二）时代背景"><a href="#（二）时代背景" class="headerlink" title="（二）时代背景"></a>（二）时代背景</h2><p>​        第一个奥林巴斯35-S于1955年推出。日本相机业从少年时期走向成熟，生产出与西德同等质量的相机，并超过了这一时期。</p>
+<p>​    <em>A basic rangefinder, no fireworks, nice to hold and use. Controls are on the lens barrel, leaving the top bare. So-so lens, yet perfect for the casual user. On the bottom of the barrel is the external sync port, by the mode selector. Smallish finder, dim. Spool rewind crank pops out by pushing a tiny slide, assume to save user’s fingernails.</em></p>
+<h2 id="（三）使用感受"><a href="#（三）使用感受" class="headerlink" title="（三）使用感受"></a>（三）使用感受</h2><p>​        基础的测距，全金属质感，拿着很舒服，快门都是在镜头上控制。但由于时间过于久远，相机的黄斑已经黯淡，为了能保证对焦，我在取景器前安装了一片蓝色透片。黄斑一下清晰明了了起来。</p>
+<p><img src="DSC_4806.jpg" alt="DSC_4806"></p>
+<p><img src="DSC_4812.jpg" alt="DSC_4812"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/changmushu.github.io/2021/09/29/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new "My New Post"
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
+</code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>昶沐沭</title>
+    <url>/changmushu.github.io/2021/09/30/%E6%98%B6%E6%B2%90%E6%B2%AD/</url>
+    <content><![CDATA[<p>​        在2021年9月30日晚11点，我大致完成了自己的博客的建立，但其中还有许多无法解决的，亦或是我现在没有精力去解决的问题。但至此已经心满意足，有一种自己慢慢制作小玩意的满足，并且满怀着信心想要去完善她，把她作为自己独立的一部分，情绪的一部分，在互联网之中漂流。</p>
+<p><img src="DSC_4158.jpg" alt="DSC_4158"></p>
+<p>​        这里上传自己最近拍的一张照片，本是无意拍花的影子，但一放到<em>PhotoShop</em>里面，就想着它会不会有其它不一样的变化。有鲜红的感觉，有强烈的命令感。</p>
+<p>​        一到气温下降的时候总会想到一个场景，在景中的走廊里，穿着蓝色棉服，坐在那儿看书或者睡觉，暖和到恰到好处的太阳使得一切变得奇幻而不真实，像是在梦境一般。</p>
+<p>​        反之哈尔滨的冬天也只有室内才能感受到这种阳光，白晃晃的世界以及凛冽的寒风，回想着快要逃离，无奈吧，徘徊吧。</p>
+<p>​        第一次写也不知道写些啥，毕竟能找到这个<em>Blog</em>的人应该很少吧。</p>
+<p>​        这是在某个B站UP主的视频下看到的，令人无限唏嘘，或许这就是现实吧。</p>
+<p>​        <u>“后来我会拥有更高超的演奏技巧，会见到更多更亮更圆的月亮，可是那一夜青涩的真诚与热枕再也没有回来。”</u></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>数据结构阶段二复习</title>
+    <url>/changmushu.github.io/2021/11/18/%E9%98%B6%E6%AE%B5%E4%BA%8C%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<p>​        </p>
+<h1 id="阶段二考试复习"><a href="#阶段二考试复习" class="headerlink" title="阶段二考试复习"></a>阶段二考试复习</h1><p>函数库 </p>
+<pre><code class="c++">#include &lt;stack&gt;
+stack&lt;int&gt; q;    //stack&lt;类型&gt; 名称
+q.empty();
+</code></pre>
+<ol>
+<li>empty(); 堆栈为空，则返回true。</li>
+<li>pop(); 移除栈顶元素。</li>
+<li>push(); 在栈顶增加元素。</li>
+<li>size(); 返回栈中元素数目。</li>
+<li>top(); 返回栈顶元素。</li>
+</ol>
+<pre><code class="c++">#include &lt;queue&gt;
+queue&lt;int&gt; q;    //queue&lt;类型&gt; 名称
+q.push;
+</code></pre>
+<ol>
+<li>empty(); 如果队列空则返回真。</li>
+<li>push(这个里面加入你需要加入的元素或者结构体); 在末尾加入一个元素。</li>
+<li>front(); 返回第一个元素。</li>
+<li>back();返回最后一个元素。</li>
+<li>pop(); 删除第一个元素。</li>
+<li>size(); 返回队列中元素的个数。</li>
+</ol>
+<pre><code class="c++">#include &lt;string&gt;
+strcpy(a,b);
+</code></pre>
+<p>将b值复制给a。</p>
+<h2 id="数组、串与广义表"><a href="#数组、串与广义表" class="headerlink" title="数组、串与广义表"></a>数组、串与广义表</h2><h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><h4 id="4198"><a href="#4198" class="headerlink" title="4198"></a>4198</h4><p><img src="184023.jpg" alt="184023"></p>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;malloc.h&gt;
+
+void LatinMatrix(int **a,int n)
+{
+    // write your code here
+    int i,j,p;
+    for (i=0;i&lt;n;i++) {
+        p = i + 1;
+        for (j=0;j&lt;n;j++)
+        {
+            a[i][j] = (p-1)%n+1;
+            p++;
+        }
+    }
+}
+
+void PrintMatrix(int **a,int n)
+{
+    int i,j;
+    for (i=0;i&lt;n;i++) {
+        for (j=0;j&lt;n;j++)
+            printf("%d ", a[i][j]);
+        printf("\n");
+    }
+}
+
+int main()
+{
+    int n,i;
+    scanf("%d", &amp;n);
+    int **array = (long **)malloc(n*sizeof(long));
+    for (i=0;i&lt;n;i++)
+        array[i] = (long *)malloc(n*sizeof(long));
+    LatinMatrix(array,n);
+    PrintMatrix(array,n);
+    return 0;
+}
+</code></pre>
+<h4 id="4197"><a href="#4197" class="headerlink" title="4197"></a>4197</h4><p><img src="184609.jpg" alt="184609"></p>
+<pre><code class="c">#include&lt;stdio.h&gt;
+int main()
+{
+    int n,a[100][100],r,c,i,j;
+    scanf("%d",&amp;n);
+    for(i=0;i&lt;n;i++)
+    {
+        for(j=0;j&lt;n;j++)
+          scanf("%d",&amp;a[i][j]);
+    }
+    int sum[100]={0};
+    for(i=0;i&lt;n;i++)
+    {
+        for(j=0;j&lt;n;j++)
+          sum[i]+=a[i][j];
+    }
+    for(i=0;i&lt;n;i++)
+    {
+        int min;
+        min=i;
+        for(j=i+1;j&lt;=n-1;j++)
+        {
+            if(sum[j]&lt;sum[min])
+              min=j;
+        }//返回sum中最小元素的下标
+        if(i!=min)
+        {
+            //对原数组进行转换
+            for(c=0;c&lt;n;c++)
+            {
+                int temp1;
+                temp1=a[min][c];
+                a[min][c]=a[i][c];
+                a[i][c]=temp1;
+             }
+             //对sum进行转换
+             int temp;
+             temp=sum[i];
+             sum[i]=sum[min];
+             sum[min]=temp;
+        }
+    }
+    for(i=0;i&lt;n;i++)
+    {
+        for(j=0;j&lt;n;j++)
+          printf("%d ",a[i][j]);
+        printf("\n");
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="串"><a href="#串" class="headerlink" title="串"></a>串</h3><h4 id="4944"><a href="#4944" class="headerlink" title="4944"></a>4944</h4><p><img src="195311.jpg" alt="195311"></p>
+<p>这题主要用BF算法</p>
+<pre><code class="c++">#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+#define Maxsize 10
+typedef struct//定义串
+{
+    char ch[Maxsize+1];
+    int length;
+}SString;
+
+int BF(SString,SString,int);//定义
+
+int main()
+{
+    SString S,T;int k=0;int a;
+    scanf("%s",S.ch);
+    scanf("%s",T.ch);
+    S.length=strlen(S.ch);//strlen()计数长度
+    T.length=strlen(T.ch);
+    scanf("%d",&amp;a);
+    k=BF(S,T,a);
+}
+int BF(SString S,SString T,int pos)
+{
+    int i,j;
+    i=pos;
+    j=0;
+    while(i&lt;S.length&amp;&amp;j&lt;T.length)
+    {
+        if(S.ch[i]==T.ch[j])
+        {
+            i++;j++;
+        }
+        else
+        {
+            i=i-j+1;j=0;
+        }
+    }
+    if(j&gt;T.length-1)
+        printf("%d",i-T.length);
+    else
+        printf("%d",-1);
+}
+</code></pre>
+<h4 id="4943"><a href="#4943" class="headerlink" title="4943"></a>4943</h4><p><img src="204725.jpg" alt="204725"></p>
+<pre><code class="c++">#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+#define Maxsize 10
+typedef struct//定义串
+{
+    char ch[Maxsize+1];
+    int length;
+}SString;
+int BF(SString,SString,SString,int);
+int main()
+{
+    SString S,T,A;int k=0;
+    scanf("%s",S.ch);
+    scanf("%s",T.ch);
+    scanf("%s",A.ch);
+    S.length=strlen(S.ch);
+    T.length=strlen(T.ch);
+    A.length=strlen(A.ch);
+    k=BF(S,T,A,0);
+}
+int BF(SString S,SString T,SString A,int pos)
+{
+    int i,j,b,c=0;
+    i=pos;
+    j=0;
+    while(i&lt;S.length&amp;&amp;j&lt;T.length)
+    {
+        if(S.ch[i]==T.ch[j])
+        {
+            i++;j++;
+        }
+        else
+        {
+            i=i-j+1;j=0;
+        }
+    }
+    if(j&gt;T.length-1)
+    {   for(b=i-T.length;b&lt;=A.length;b++)
+        {
+            S.ch[b]=A.ch[c];
+            c++;
+        }
+         for(int a = 0;a&lt;S.length;a++)
+         {
+        printf("%c",S.ch[a]);
+         }
+    }
+    else
+    {
+        for(int a = 0;a&lt;S.length;a++)
+        {
+        printf("%c",S.ch[a]);
+        }
+    }
+}
+</code></pre>
+<h4 id="4203"><a href="#4203" class="headerlink" title="4203"></a>4203</h4><p><img src="205716.jpg" alt="205716"></p>
+<pre><code class="c">#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+
+#define TRUE 1
+#define FALSE 0
+
+typedef int Status;
+
+Status isSymmetry(char *a)
+{
+    // write your code here
+    int j;int i = 0;
+    j=strlen(a)-1;
+    while(i!=j&amp;&amp;i+1!=j)
+    {
+        if((a[i])==a[j])
+        {
+            i++;j--;
+        }
+        else{return FALSE;}
+    }
+    return TRUE;
+}
+
+int main()
+{
+    char a[20];
+    gets(a);
+    char *str = a;
+    if (isSymmetry(str))
+        printf("YES\n");
+    else
+        printf("NO\n");
+    return 0;
+}
+</code></pre>
+<h4 id="4941"><a href="#4941" class="headerlink" title="4941"></a>4941</h4><p><img src="210059.jpg" alt="210059"></p>
+<pre><code class="c">#include&lt;iostream&gt;
+#include&lt;string.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+using namespace std;
+
+//write your code here
+int stringToInt(char *s)
+{
+    int x;
+    x=atoi(s);
+    return x;
+
+}
+
+int main()
+{
+    char a[20],b[20];
+    cin &gt;&gt; a &gt;&gt; b;
+    int m = stringToInt(a);
+    int n = stringToInt(b);
+    cout &lt;&lt; m+n &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<h4 id="4940"><a href="#4940" class="headerlink" title="4940"></a>4940</h4><pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;string.h&gt;
+using namespace std;
+
+#define defaultSize 128
+
+class AString {
+private:
+    char *ch;
+    int curLength;
+    int maxSize;
+public:
+    AString(int sz=defaultSize);
+    AString(const char *init);
+    AString(const AString &amp;ob);
+    ~AString()
+    {
+        if (ch!=NULL)
+            delete []ch;
+    }
+    int Length() const { return curLength; }
+    AString operator()(int pos,int len);
+    int operator==(AString &amp;ob)const
+    {
+        return strcmp(ch,ob.ch)==0;
+    }
+    int operator!=(AString &amp;ob) const
+    {
+        return strcmp(ch,ob.ch)!=0;
+    }
+    int operator!() const
+    {
+        return curLength==0;
+    }
+    AString &amp;operator=(const AString &amp;ob);
+    AString &amp;operator+=(const AString &amp;ob);
+    char operator[](int i);
+    char *getString() const
+    {
+        return this-&gt;ch;
+    }
+};
+
+AString::AString(int sz)
+{
+    maxSize = sz;
+    ch = new char[maxSize+1];
+    curLength=0;
+    ch[0]='\0';
+}
+
+AString::AString(const char *init)
+{
+    int len=strlen(init);
+    maxSize = (len&gt;defaultSize)?len:defaultSize;
+    ch = new char[maxSize+1];
+    curLength = len;
+    strcpy(ch,init);
+}
+
+AString::AString(const AString &amp;ob)
+{
+    maxSize = ob.maxSize;
+    ch = new char[maxSize+1];
+    curLength = ob.curLength;
+    strcpy(ch,ob.ch);
+}
+
+AString AString::operator ()(int pos,int len)
+{
+    AString temp;
+    if (pos&lt;0||pos+len-1&gt;=maxSize||len&lt;0) {
+        temp.curLength = 0;
+        temp.ch[0] = '\0';
+    }
+    else {
+        if (pos+len-1&gt;=curLength)
+            len = curLength-pos;
+        temp.curLength = len;
+        int i,j;
+        for (i=0,j=pos;i&lt;len;i++,j++)
+            temp.ch[i] = ch[j];
+        temp.ch[len] = '\0';
+    }
+    return temp;
+}
+
+AString&amp; AString::operator =(const AString &amp;ob)
+{
+    if (&amp;ob!=this) {
+        delete []ch;
+        ch = new char[ob.maxSize];
+        curLength = ob.curLength;
+        strcpy(ch,ob.ch);
+    }
+    return *this;
+}
+
+AString&amp; AString::operator +=(const AString&amp; ob)
+{
+    char *temp = ch;
+    int n = curLength+ob.curLength;
+    int m = n+1;
+    ch = new char[m];
+    maxSize = m;
+    curLength = n;
+    int i;
+    for (i=0;temp[i]!='\0';i++)
+        ch[i] = temp[i];
+    int j;
+    for (j=0;ob.ch[j]!='\0';j++,i++)
+        ch[i] = ob.ch[j];
+    ch[i] = '\0';
+    delete []temp;
+    return *this;
+}
+
+char AString::operator [](int i)
+{
+    if (i&lt;0||i&gt;=curLength)
+        return ' ';
+    return ch[i];
+}
+
+int main()
+{
+    AString str1(20);
+    str1 = "Hello World!";
+    AString str2("I am a programmer.");
+    AString str3(str2);
+    cout &lt;&lt; str1.Length() &lt;&lt; endl;
+    if (str2==str3)
+        str1+=str2;
+    int i;
+    for (i=0;i&lt;str1.Length();i++)
+        cout &lt;&lt; str1[i];
+    cout &lt;&lt; endl;
+    str2 = str3(7,20);
+    cout &lt;&lt; str2[4] &lt;&lt; endl;
+    return 0;
+}
+</code></pre>
+<h4 id="计算字符出现频度"><a href="#计算字符出现频度" class="headerlink" title="计算字符出现频度"></a>计算字符出现频度</h4><pre><code class="c++">void Count()
+{
+    for(i=0;i&lt;36;i++) num[i]=0;
+    while((ch=getchar())!='\0'）
+          {
+                      if('0'&lt;=ch&lt;='9')
+                  {
+                      i = ch-48;
+                      num[i]++;
+                  }
+                  else if('A'&lt;=ch&lt;='Z')
+                  {
+                      i=ch-65+10;
+                      num[i]++;
+                  }
+          }
+    for(i=0;i&lt;10;i++)
+          {
+              cout&lt;&lt;"数字"&lt;&lt;i&lt;&lt;"的个数="&lt;&lt;num[i]&lt;&lt;endl;
+          }
+    for(i=10;i&lt;36;i++)
+          {
+              cout&lt;&lt;"字母字符"&lt;&lt;char(i+55)&lt;&lt;"的个数="&lt;&lt;num[i]&lt;&lt;endl;
+          }
+}
+</code></pre>
+<h4 id="字符串逆序存储"><a href="#字符串逆序存储" class="headerlink" title="字符串逆序存储"></a>字符串逆序存储</h4><pre><code class="c++">void Inverse(char A[])
+{//递归实现字符串的逆序存储
+    static int i = 0;        //静态变量记录字符数组的下标
+    cin&gt;&gt;ch;
+    if(ch!='.')            //'.'是字符串输入结束标志
+    {
+        Inverse(A);        //递归
+        A[i++]=ch;        //递归返回后存储字符串
+    }
+    A[i]='\0';            //字符串最后加上结尾标记
+}
+</code></pre>
+<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><h4 id="4976"><a href="#4976" class="headerlink" title="4976"></a>4976</h4><p><img src="213236.jpg" alt="213236"></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;stdlib.h&gt;
+using namespace std;
+
+struct TreeNode {
+    int data;
+    TreeNode *leftChild,*rightChild;
+    TreeNode()
+    {
+        leftChild = NULL;
+        rightChild = NULL;
+    }
+};
+
+class BinaryTree {
+protected:
+    TreeNode *root;
+    void copy(TreeNode *&amp;target,TreeNode *origin);
+    void create(TreeNode *&amp;root,const int *a,int i,const int l);
+    void destroy(TreeNode *&amp;root);
+    TreeNode *parent(TreeNode* root,TreeNode *current);
+    void exchangeLRsubTree(TreeNode *root);
+public:
+    BinaryTree() { root=NULL; }
+    ~BinaryTree() { destroy(root); }
+    void Create(BinaryTree *&amp;bt,const int *a,int i,const int l);
+    TreeNode *getRoot() { return root; }
+    void preOrder(TreeNode *root);
+    TreeNode *Parent(TreeNode *current);
+    void exchangeLRsubTree();
+};
+
+void BinaryTree::create(TreeNode *&amp;root,const int *a,int i,const int l)
+{
+    if (i&gt;=l)
+        return;
+    if (a[i]==0) {
+        root = NULL;
+        return;
+    }
+    else {
+        root = new TreeNode();
+        root-&gt;data = a[i];
+        create(root-&gt;leftChild,a,i*2+1,l);
+        create(root-&gt;rightChild,a,i*2+2,l);
+    }
+}
+
+void BinaryTree::Create(BinaryTree *&amp;bt,const int *a,int i,const int l)
+{
+    this-&gt;create(bt-&gt;root,a,i,l);
+}
+
+TreeNode* BinaryTree::Parent(TreeNode *current)
+{
+    if (current==NULL||current==root)
+        return NULL;
+    return this-&gt;parent(this-&gt;root,current);
+}
+
+void BinaryTree::destroy(TreeNode *&amp;root)
+{
+    if (root-&gt;leftChild!=NULL)
+        destroy(root-&gt;leftChild);
+    if (root-&gt;rightChild!=NULL)
+        destroy(root-&gt;rightChild);
+    delete root;
+    root = NULL;
+}
+
+TreeNode* BinaryTree::parent(TreeNode* root,TreeNode *current)
+{
+    if (root==NULL)
+        return NULL;
+    if (root-&gt;leftChild==current||root-&gt;rightChild==current)
+        return root;
+    else return (parent(root-&gt;leftChild,current)==NULL)?parent(root-&gt;rightChild,current):parent(root-&gt;leftChild,current);
+}
+
+void BinaryTree::preOrder(TreeNode *root)
+{
+    if (root!=NULL)
+    {
+        cout &lt;&lt; root-&gt;data &lt;&lt; " ";
+        preOrder(root-&gt;leftChild);
+        preOrder(root-&gt;rightChild);
+    }
+}
+
+void BinaryTree::exchangeLRsubTree()
+{
+    this-&gt;exchangeLRsubTree(this-&gt;root);
+}
+
+void BinaryTree::exchangeLRsubTree(TreeNode *root)
+{
+    // write your code here
+     // write your code here
+    TreeNode *temp;
+    if(root==NULL) return;
+    if(root-&gt;leftChild==NULL&amp;&amp;root-&gt;rightChild==NULL)
+        return;
+    else
+    {
+        temp=root-&gt;leftChild;
+        root-&gt;leftChild=root-&gt;rightChild;
+        root-&gt;rightChild=temp;
+    }
+    exchangeLRsubTree(root-&gt;leftChild);
+    exchangeLRsubTree(root-&gt;rightChild);
+}
+
+int main()
+{
+    int length = 10;
+    cin &gt;&gt; length;
+    int *a = new int[length];
+    int i;
+    for (i=0;i&lt;length;i++)
+        cin &gt;&gt; a[i];
+    BinaryTree *bt = new BinaryTree();
+    bt-&gt;Create(bt,a,0,length);
+    bt-&gt;exchangeLRsubTree();
+    bt-&gt;preOrder(bt-&gt;getRoot());
+    return 0;
+}
+</code></pre>
+<h4 id="6111"><a href="#6111" class="headerlink" title="6111"></a>6111</h4><p><img src="103227.jpg" alt="103227"></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+using namespace std;
+
+#define MAXSIZE 30
+
+typedef struct BiTNode{
+    char data;
+    struct BiTNode *lchild,*rchild;
+}BiTNode,*BiTree;;
+
+void Creat(BiTNode *&amp;T){   //先序建立二叉树 ，存放表达式
+    char ch;
+    cin&gt;&gt;ch;
+    if(ch == '*')T = NULL;
+    else{
+        T = new BiTNode;
+        T-&gt;data = ch;
+        Creat(T-&gt;lchild);
+        Creat(T-&gt;rchild);
+    }
+}
+
+bool PrintAncestors(BiTree T,int x)
+{
+    if(!T) return false;
+    if (T-&gt;data == x) return true;
+
+    if (PrintAncestors(T-&gt;lchild, x) || PrintAncestors(T-&gt;rchild, x))
+    {
+        cout &lt;&lt; T-&gt;data &lt;&lt; " ";
+        return true;
+    }
+
+    return false;
+}
+
+void InOrderTraverse(BiTree T,int x,int &amp;tag)
+{
+    if(T)
+    {
+        if(T-&gt;data==x){tag=1;}
+        InOrderTraverse(T-&gt;lchild,x,tag);
+        InOrderTraverse(T-&gt;rchild,x,tag);
+    }
+}
+
+int main(){
+    char x;int tag = 0;
+    BiTNode *tree;
+    char expression[MAXSIZE];
+    char path[MAXSIZE];
+    Creat(tree);
+    cin&gt;&gt;x;
+    InOrderTraverse(tree,x,tag);
+    if(tree-&gt;data==x)
+    {
+        printf("没有祖先结点");
+    }else if(tag==0)
+    {
+        printf("%c不存在",x);
+    }else
+    {
+        PrintAncestors(tree,x);
+    }
+}
+
+</code></pre>
+<h4 id="7075"><a href="#7075" class="headerlink" title="7075"></a>7075</h4><p>前中后序遍历改输出的位置即可。</p>
+<p><img src="165313.jpg" alt="165313"></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+using namespace std;
+
+#define MAXSIZE 30
+
+typedef struct BiTNode{
+    char data;
+    struct BiTNode *lchild,*rchild;
+}BiTNode,*BiTree;;
+
+void Creat(BiTNode *&amp;T){   //先序建立二叉树 ，存放表达式
+    char ch;
+    cin&gt;&gt;ch;
+    if(ch == '@')T = NULL;
+    else{
+        T = new BiTNode;
+        T-&gt;data = ch;
+        Creat(T-&gt;lchild);
+        Creat(T-&gt;rchild);
+    }
+}
+
+void InOrderTraverse(BiTree T)
+{
+    if(T)
+    {
+        InOrderTraverse(T-&gt;lchild);
+        InOrderTraverse(T-&gt;rchild);
+        cout&lt;&lt;T-&gt;data;
+    }
+}
+
+int main(){
+    BiTNode *tree;
+    char expression[MAXSIZE];
+    char path[MAXSIZE];
+    Creat(tree);
+    InOrderTraverse(tree);
+}
+</code></pre>
+<h4 id="7077"><a href="#7077" class="headerlink" title="7077"></a>7077</h4><p>层次遍历</p>
+<pre><code class="c++">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+typedef struct BinNode{
+    char data;
+    struct BinNode *left;
+    struct BinNode *right;
+}BinNode,*BinTree;
+#define MAXSIZE 1024
+typedef struct{
+    BinTree data[MAXSIZE];
+    int front,rear;
+}SeQueue;
+void QueueInit(SeQueue &amp;Q){
+    Q.front=0;Q.rear=0;
+}
+void QueuePush(SeQueue &amp;Q,BinTree x){
+    Q.data[Q.rear]=x;
+    Q.rear=(Q.rear+1)%MAXSIZE;
+}
+void GetHead(SeQueue Q,BinTree &amp;x){
+    x=Q.data[Q.front];
+}
+bool QueueEmpty(SeQueue Q){
+    if(Q.front==Q.rear)return 1;
+    return 0;
+}
+void QueuePop(SeQueue &amp;Q,BinTree &amp;x){
+    x=Q.data[Q.front];
+    Q.front=(Q.front+1)%MAXSIZE;
+}
+
+void CreateBinTree(BinTree &amp;T){
+    char ch;cin&gt;&gt;ch;
+    if(ch=='@')T=NULL;
+    else{
+        T=new BinNode;
+        T-&gt;data=ch;
+        CreateBinTree(T-&gt;left);
+        CreateBinTree(T-&gt;right);
+    }
+}
+
+void BfsTree(BinTree T){
+    SeQueue Q;QueueInit(Q);
+    QueuePush(Q,T);
+    while(!QueueEmpty(Q)){
+        BinTree output;
+        output=new BinNode;
+        QueuePop(Q,output);
+        cout&lt;&lt;output-&gt;data;
+        if(output-&gt;left!=NULL)QueuePush(Q,output-&gt;left);
+        if(output-&gt;right!=NULL)QueuePush(Q,output-&gt;right);
+    }
+}
+
+int main(){
+    BinTree T;
+    CreateBinTree(T);
+    BfsTree(T);
+    return 0;
+}
+</code></pre>
+<h4 id="7076"><a href="#7076" class="headerlink" title="7076"></a>7076</h4><p>输出叶子结点个数</p>
+<pre><code class="c++">#include&lt;iostream&gt;
+using namespace std;
+
+#define MAXSIZE 30
+
+typedef struct BiTNode{
+    char data;
+    struct BiTNode *lchild,*rchild;
+}BiTNode,*BiTree;;
+
+void Creat(BiTNode *&amp;T){   //先序建立二叉树 ，存放表达式
+    char ch;
+    cin&gt;&gt;ch;
+    if(ch == '@')T = NULL;
+    else{
+        T = new BiTNode;
+        T-&gt;data = ch;
+        Creat(T-&gt;lchild);
+        Creat(T-&gt;rchild);
+    }
+}
+
+int LeafCount(BiTree T)
+{
+    if(T==NULL) return 0;
+    else
+    {
+        if((!T-&gt;lchild)&amp;&amp;(!T-&gt;rchild))
+            return 1;
+        else
+            return LeafCount(T-&gt;lchild)+LeafCount(T-&gt;rchild);
+    }
+}
+
+int main(){
+    BiTNode *tree;
+    char expression[MAXSIZE];
+    char path[MAXSIZE];
+    Creat(tree);
+    cout&lt;&lt;LeafCount(tree);
+}
+
+</code></pre>
+<h4 id="7074"><a href="#7074" class="headerlink" title="7074"></a>7074</h4><p>输出二叉树高度</p>
+<pre><code class="c++">#include&lt;iostream&gt;
+using namespace std;
+
+#define MAXSIZE 30
+
+typedef struct BiTNode{
+    char data;
+    struct BiTNode *lchild,*rchild;
+}BiTNode,*BiTree;;
+
+void Creat(BiTNode *&amp;T){   //先序建立二叉树 ，存放表达式 
+    char ch;
+    cin&gt;&gt;ch;
+    if(ch == '@')T = NULL;
+    else{
+        T = new BiTNode;
+        T-&gt;data = ch;
+        Creat(T-&gt;lchild);
+        Creat(T-&gt;rchild);
+    }
+}
+
+int Depth(BiTree T)
+{
+    int m,n;
+    if(T==NULL) return 0;
+    else{
+        m=Depth(T-&gt;lchild);
+        n=Depth(T-&gt;rchild);
+        if(m&gt;n) return(m+1);
+        else return(n+1);
+    }
+}
+
+int main(){
+    BiTNode *tree;
+    char expression[MAXSIZE]; 
+    char path[MAXSIZE];
+    Creat(tree);
+    cout&lt;&lt;Depth(tree);
+}
+</code></pre>
+<h4 id="7080"><a href="#7080" class="headerlink" title="7080"></a>7080</h4><p><img src="165848.jpg" alt="165848"></p>
+<pre><code class="c++">#include&lt;stdlib.h&gt;
+#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;math.h&gt;
+#include&lt;stdbool.h&gt;
+#include&lt;iostream&gt;
+using namespace std;
+
+typedef struct BinNode{
+    char data;
+    struct BinNode *left;
+    struct BinNode *right;
+}BinNode,*BinTree;
+
+void CreateBinTree(BinTree &amp;T){
+    char ch;cin&gt;&gt;ch;
+    if(ch=='@')T=NULL;
+    else{
+        T=new BinNode;
+        T-&gt;data=ch;
+        CreateBinTree(T-&gt;left);
+        CreateBinTree(T-&gt;right);
+    }
+}
+
+
+int CountLeaf(BinTree T){
+    int res=0;
+    if(T==NULL)return 0;
+    if(T-&gt;left==NULL)return 1+CountLeaf(T-&gt;right);
+    else return CountLeaf(T-&gt;left)+CountLeaf(T-&gt;right);
+}
+int main(){
+    BinTree T;
+    CreateBinTree(T);
+    printf("%d",CountLeaf(T));
+    return 0;
+}
+</code></pre>
+<h2 id="图"><a href="#图" class="headerlink" title="图"></a>图</h2><h3 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h3><h4 id="7039-有向图"><a href="#7039-有向图" class="headerlink" title="7039(有向图)"></a>7039(有向图)</h4><p><img src="125414.jpg" alt="125414"></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+
+using namespace std;
+
+const int MAXNum=100;
+
+typedef struct ArcNode              //边结点
+{
+    int adjvex;                     //该边所指向的顶点的位置
+    struct ArcNode * nextarc;       //指向下一条边的指针
+}ArcNode;
+
+typedef struct VNode                //顶点信息
+{
+    int data;
+    ArcNode *firstarc;              //指向第一条依附该顶点的边的指针
+}VNode,AdjList[MAXNum];             //AdjList表示邻接表的类型
+
+typedef struct                      //邻接表
+{
+    AdjList verlist;
+    int vexnum,arcnum;              //图的当前顶点数和边数
+}Graph;
+
+void CreateUDG(Graph &amp;G)
+{                                   //采用邻接表表示法，创建有向图G
+    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;
+    for(int i = 1;i&lt;=G.vexnum;i++)
+    {
+        cin&gt;&gt;G.verlist[i].data;
+        G.verlist[i].firstarc=NULL;
+    }
+    for(int i = 1;i&lt;=G.arcnum;i++)
+    {
+        int x,y;cin&gt;&gt;x&gt;&gt;y;
+
+        ArcNode * p1 = new ArcNode;
+
+        p1-&gt;adjvex = y;
+        p1-&gt;nextarc = G.verlist[x].firstarc;
+        G.verlist[x].firstarc=p1;
+
+    }
+}
+
+void Print(Graph G)
+{
+    for(int i = 1;i&lt;=G.vexnum;i++)
+    {
+        ArcNode* p = G.verlist[i].firstarc;
+        cout&lt;&lt;i&lt;&lt;":";
+        while(p!=NULL){
+            cout&lt;&lt;p-&gt;adjvex;
+            if(p-&gt;nextarc!=NULL)cout&lt;&lt;" ";
+            p=p-&gt;nextarc;
+        }
+        cout&lt;&lt;endl;
+    }
+}
+bool vis[MAXNum];
+void DFS(Graph G,int u)
+{
+    ArcNode* p=G.verlist[u].firstarc;
+    vis[u]=true;
+    cout&lt;&lt;u&lt;&lt;" ";
+    while(p!=NULL)
+    {
+        if(!vis[p-&gt;adjvex])
+        {
+            DFS(G,p-&gt;adjvex);
+        }
+        p=p-&gt;nextarc;
+    }
+}
+
+int main()
+{
+    Graph G;
+    CreateUDG(G);
+    Print(G);
+    DFS(G,1);
+    return 0;
+}
+</code></pre>
+<h4 id="7040-有向图"><a href="#7040-有向图" class="headerlink" title="7040(有向图)"></a>7040(有向图)</h4><p><img src="133703.jpg" alt="133703"></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+
+using namespace std;
+
+const int MAXNum=100;
+
+typedef struct ArcNode              //边结点
+{
+    int adjvex;                     //该边所指向的顶点的位置
+    struct ArcNode * nextarc;       //指向下一条边的指针
+}ArcNode;
+
+typedef struct VNode                //顶点信息
+{
+    int data;
+    ArcNode *firstarc;              //指向第一条依附该顶点的边的指针
+}VNode,AdjList[MAXNum];             //AdjList表示邻接表的类型
+
+typedef struct                      //邻接表
+{
+    AdjList verlist;
+    int vexnum,arcnum;              //图的当前顶点数和边数
+}Graph;
+
+void CreateUDG(Graph &amp;G)
+{                                   //采用邻接表表示法，创建有向图G
+    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;
+    for(int i = 1;i&lt;=G.vexnum;i++)
+    {
+        cin&gt;&gt;G.verlist[i].data;
+        G.verlist[i].firstarc=NULL;
+    }
+    for(int i = 1;i&lt;=G.arcnum;i++)
+    {
+        int x,y;cin&gt;&gt;x&gt;&gt;y;
+
+        ArcNode * p1 = new ArcNode;
+
+        p1-&gt;adjvex = y;
+        p1-&gt;nextarc = G.verlist[x].firstarc;
+        G.verlist[x].firstarc=p1;
+
+    }
+}
+int in[MAXNum],out[MAXNum];
+void TD(Graph G)
+{
+    for(int i = 1;i&lt;=G.vexnum;i++)
+    {
+        ArcNode* p = G.verlist[i].firstarc;
+        while(p!=NULL)
+        {
+            in[p-&gt;adjvex]++;
+            out[i]++;
+            p=p-&gt;nextarc;
+        }
+    }
+}
+
+int main(){
+    Graph G;
+    CreateUDG(G);
+    TD(G);
+    for(int i=1;i&lt;=G.vexnum;i++){
+        cout&lt;&lt;i&lt;&lt;":"&lt;&lt;in[i]&lt;&lt;" "&lt;&lt;out[i]&lt;&lt;" "&lt;&lt;in[i]+out[i]&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<h4 id="7042-无向图"><a href="#7042-无向图" class="headerlink" title="7042(无向图)"></a>7042(无向图)</h4><p><img src="151633.jpg" alt="151633"></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;stack&gt;
+
+using namespace std;
+
+const int MAXNum=105;
+
+typedef struct ArcNode              //边结点
+{
+    int adjvex;                     //该边所指向的顶点的位置
+    struct ArcNode * nextarc;       //指向下一条边的指针
+}ArcNode;
+
+typedef struct VNode                //顶点信息
+{
+    int data;
+    ArcNode *firstarc;              //指向第一条依附该顶点的边的指针
+}VNode,AdjList[MAXNum];             //AdjList表示邻接表的类型
+
+typedef struct                      //邻接表
+{
+    AdjList verlist;
+    int vexnum,arcnum;              //图的当前顶点数和边数
+}Graph;
+
+void CreateUDG(Graph &amp;G)
+{                                   //采用邻接表表示法，创建有向图G
+    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;
+    for(int i = 1;i&lt;=G.vexnum;i++)
+    {
+        cin&gt;&gt;G.verlist[i].data;
+        G.verlist[i].firstarc=NULL;
+    }
+    for(int i = 1;i&lt;=G.arcnum;i++)
+    {
+        int x,y;cin&gt;&gt;x&gt;&gt;y;
+
+        ArcNode * p1 = new ArcNode;
+        ArcNode * p2 = new ArcNode;
+
+        p1-&gt;adjvex = y;
+        p1-&gt;nextarc = G.verlist[x].firstarc;
+        G.verlist[x].firstarc=p1;
+
+        p2-&gt;adjvex = x;
+        p2-&gt;nextarc = G.verlist[y].firstarc;
+        G.verlist[y].firstarc=p2;
+    }
+}
+/*递归
+bool visited[MAXNum];
+void DFS(Graph G,int v)
+{
+    cout&lt;&lt;"v"&lt;&lt;v&lt;&lt;" ";visited[v]=true;
+    ArcNode * p = G.verlist[v].firstarc;
+    while(p!=NULL)
+    {
+        if(!visited[p-&gt;adjvex]){DFS(G,p-&gt;adjvex);}
+        p = p-&gt;nextarc;
+    }
+}*/
+
+bool visited[MAXNum];
+void DFS(Graph G,int v)        //非递归
+{
+    stack&lt;int&gt;q;
+    q.push(v);visited[v]=true;
+    cout&lt;&lt;"v1 ";
+    while(!q.empty())
+    {
+        int t=q.top();
+        ArcNode *p=G.verlist[t].firstarc;
+        while(p&amp;&amp;visited[p-&gt;adjvex])
+        {
+            p=p-&gt;nextarc;
+        }
+        while(p&amp;&amp;!visited[p-&gt;adjvex])
+        {
+            cout&lt;&lt;"v"&lt;&lt;p-&gt;adjvex&lt;&lt;" ";
+            visited[p-&gt;adjvex]=true;
+            q.push(p-&gt;adjvex);
+            p=G.verlist[p-&gt;adjvex].firstarc;
+        }
+        if(p==NULL){q.pop();}
+    }
+}
+
+int main()
+{
+    Graph G;
+    CreateUDG(G);
+    DFS(G,1);
+    return 0;
+}
+</code></pre>
+<h4 id="╳7043-无向图的建立与遍历）"><a href="#╳7043-无向图的建立与遍历）" class="headerlink" title="╳7043(无向图的建立与遍历）"></a>╳7043(无向图的建立与遍历）</h4><p><img src="153324.jpg" alt="153324"></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+#include&lt;stack&gt;
+
+using namespace std;
+
+const int MAXNum=100;
+
+typedef struct ArcNode              //边结点
+{
+    int adjvex;                     //该边所指向的顶点的位置
+    struct ArcNode * nextarc;//指向下一条边的指针
+    //OtherInfo info；            //和边相关的信息
+}ArcNode;
+
+typedef struct VNode                //顶点信息
+{
+    int data;
+    ArcNode *firstarc;              //指向第一条依附该顶点的边的指针
+}VNode,AdjList[MAXNum];             //AdjList表示邻接表的类型
+
+typedef struct                      //邻接表
+{
+    AdjList verlist;
+    int vexnum,arcnum;              //图的当前顶点数和边数
+}Graph;
+
+int LocateVex(Graph G,char v)
+{
+    for(int i = 1;i&lt;G.vexnum;i++)
+    {
+        if(G.verlist[i].data==v)
+        {
+            return i;
+        }
+    }
+}
+
+void CreateUDG(Graph &amp;G)
+{                                   //采用邻接表表示法，创建无向图G
+    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;        //输入各点，构造表头结点表
+    for(int i = 1;i&lt;=G.vexnum;i++)
+    {
+        cin&gt;&gt;G.verlist[i].data;        //输入顶点值
+        G.verlist[i].firstarc=NULL;    //初始化表头结点的指针域为NULL
+    }
+    for(int i = 1;i&lt;=G.arcnum;i++)    //输入各边，构造邻接表
+    {
+        int v1,v2;cin&gt;&gt;v1&gt;&gt;v2;        //输入一条边依附的两个顶点
+        int a,b;
+        a = LocateVex(G,v1);b = LocateVex(G,v2);
+
+        ArcNode * p1 = new ArcNode;
+        ArcNode * p2 = new ArcNode;
+
+        p1-&gt;adjvex = b;
+        p1-&gt;nextarc = G.verlist[a].firstarc;
+        G.verlist[a].firstarc=p1;
+
+        p2-&gt;adjvex = a;
+        p2-&gt;nextarc = G.verlist[b].firstarc;
+        G.verlist[b].firstarc=p2;
+    }
+}
+/*递归
+bool visited[MAXNum];
+void DFS(Graph G,int v)
+{
+    cout&lt;&lt;"v"&lt;&lt;v&lt;&lt;" ";visited[v]=true;
+    ArcNode * p = G.verlist[v].firstarc;
+    while(p!=NULL)
+    {
+        if(!visited[p-&gt;adjvex]){DFS(G,p-&gt;adjvex);}
+        p = p-&gt;nextarc;
+    }
+}*/
+
+/*非递归
+bool visited[MAXNum];
+void DFS(Graph G,int v)
+{
+    stack&lt;int&gt;q;
+    q.push(v);visited[v]=true;
+    cout&lt;&lt;"v1 ";
+    while(!q.empty())
+    {
+        int t=q.top();
+        ArcNode *p=G.verlist[t].firstarc;
+        while(p&amp;&amp;visited[p-&gt;adjvex])
+        {
+            p=p-&gt;nextarc;
+        }
+        while(p&amp;&amp;!visited[p-&gt;adjvex])
+        {
+            cout&lt;&lt;"v"&lt;&lt;p-&gt;adjvex&lt;&lt;" ";
+            visited[p-&gt;adjvex]=true;
+            q.push(p-&gt;adjvex);
+            p=G.verlist[p-&gt;adjvex].firstarc;
+        }
+        if(p==NULL){q.pop();}
+    }
+}*/
+
+bool visited[MAXNum];
+void BFS(Graph G)
+{
+    queue&lt;int&gt; q;
+    cout&lt;&lt;"v1 ";
+    q.push(1);
+    visited[1]=true;
+    while(!q.empty())
+    {
+        int u = q.front();q.pop();
+        ArcNode* p = G.verlist[u].firstarc;
+        while(p!=NULL)
+        {
+            if(!visited[p-&gt;adjvex])
+            {
+                cout&lt;&lt;"v"&lt;&lt;p-&gt;adjvex&lt;&lt;" ";
+                visited[p-&gt;adjvex]=true;
+                q.push(p-&gt;adjvex);
+            }
+            p=p-&gt;nextarc;
+        }
+
+    }
+}
+
+int main()
+{
+    Graph G;
+    CreateUDG(G);
+    BFS(G);
+    return 0;
+}
+</code></pre>
+<h4 id="6112-有向图"><a href="#6112-有向图" class="headerlink" title="6112(有向图)"></a>6112(有向图)</h4><p><img src="180909.jpg" alt="180909"></p>
+<pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;cstring&gt;
+#include&lt;queue&gt;
+
+using namespace std;
+
+const int MAXNum=100;
+
+typedef struct ArcNode              //边结点
+{
+    int adjvex;                     //该边所指向的顶点的位置
+    struct ArcNode * nextarc;       //指向下一条边的指针
+}ArcNode;
+
+typedef struct VNode                //顶点信息
+{
+    int data;
+    ArcNode *firstarc;              //指向第一条依附该顶点的边的指针
+}VNode,AdjList[MAXNum];             //AdjList表示邻接表的类型
+
+typedef struct                      //邻接表
+{
+    AdjList verlist;
+    int vexnum,arcnum;              //图的当前顶点数和边数
+}Graph;
+
+void CreateUDG(Graph &amp;G)
+{                                   //采用邻接表表示法，创建有向图G
+    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;
+    for(int i = 1;i&lt;=G.vexnum;i++)
+    {
+        G.verlist[i].data=i;
+        G.verlist[i].firstarc=NULL;
+    }
+    for(int i = 1;i&lt;=G.arcnum;i++)
+    {
+        char m;
+        int x,y;cin&gt;&gt;x&gt;&gt;m&gt;&gt;y;
+
+        ArcNode * p1 = new ArcNode;
+
+        p1-&gt;adjvex = y;
+        p1-&gt;nextarc = G.verlist[x].firstarc;
+        G.verlist[x].firstarc=p1;
+    }
+}
+
+bool vis[MAXNum];
+bool DFS(Graph G,int i,int j)
+{
+    if(i==j)return true;
+    ArcNode* p=G.verlist[i].firstarc;
+    vis[i]=true;
+    while(p!=NULL)
+    {
+        if(!vis[p-&gt;adjvex] &amp;&amp; DFS(G,p-&gt;adjvex,j))
+        {
+           return true;
+        }
+        p=p-&gt;nextarc;
+    }
+    return false;
+}
+
+
+int main()
+{
+    int tag1 = 1;int tag0 = 0;
+    int i,j;
+    Graph G;
+    CreateUDG(G);
+    cin&gt;&gt;i&gt;&gt;j;
+    if(DFS(G,i,j))
+    {
+        cout&lt;&lt;1;
+    }else
+    {
+        cout&lt;&lt;0;
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h3><h4 id="╳邻接矩阵的建立与遍历"><a href="#╳邻接矩阵的建立与遍历" class="headerlink" title="╳邻接矩阵的建立与遍历"></a>╳邻接矩阵的建立与遍历</h4><pre><code class="c++">#include&lt;iostream&gt;
+#include&lt;stdio.h&gt;
+#include&lt;cstring&gt;
+
+using namespace std;
+
+#define MaxInt 32767        //表示极大值
+#define MVNum 100            //最大顶点数
+typedef char VerTexType;    //假设顶点的数据类型为字符型
+typedef int ArcType;        //假设边的权值类型为整数
+typedef struct
+{
+    VerTexType vexs[MVNum];    //顶点表
+    ArcType arcs[MVNum][MVNum];    //邻接矩阵
+    int vexnum,arcnum;        //图的当前点数和边数
+}AMGraph;
+
+
+int LocateVex(AMGraph G,char v)
+{
+    for(int i = 1;i&lt;G.vexnum;i++)
+    {
+        if(G.vexs[i]==v)
+        {
+            return i;
+        }
+    }
+}
+
+void CreateUDN(AMGraph &amp;G)
+{//采用邻接矩阵表示法，创建无向图
+    cin&gt;&gt;G.vexnum&gt;&gt;G.arcnum;                    //输入总顶点数，总边数
+    for(int i = 1;i&lt;=G.vexnum;i++)               //依次输入点的信息
+    {
+        cin&gt;&gt;G.vexs[i];
+    }
+    for(int i = 1;i&lt;=G.vexnum;i++)               //初始化邻接矩阵，边的权值为极大值
+    {
+        for(int j = 1;j&lt;=G.vexnum;j++)
+        {
+            G.arcs[i][j] = 0;//G.arcs[i][j] = MaxInt;
+        }
+    }
+    for(int k = 1;k&lt;=G.arcnum;k++)               //构造邻接矩阵
+    {
+        char v1,v2;//int w;                       //输入一条边依附的顶点及权值
+        cin&gt;&gt;v1&gt;&gt;v2;//cin&gt;&gt;w;
+
+        int i,j;
+        i = LocateVex(G,v1);j = LocateVex(G,v2);//确定v1和v2在G中的位置，即顶点数组的下标
+        G.arcs[i][j] = 1;                       //边&lt;v1,v2&gt;权值为0
+        G.arcs[j][i] = G.arcs[i][j];            //置&lt;v1,v2&gt;的对称边&lt;v2,v1&gt;的权值为0，有向图删此条代码
+    }
+}
+
+bool visited[MVNum];
+void DFS_AM(AMGraph G,int v)
+{//图G为邻接矩阵类型，从第v个顶点出发深度优先搜索遍历图G
+    cout&lt;&lt;v&lt;&lt;" ";visited[v] = true;                //访问第v个顶点，并置访问标志数组相应分量值为true
+    for(int w = 1;w&lt;=G.vexnum;w++)                //依次检查邻接矩阵v所在的行
+    {
+        if((G.arcs[v][w]!=0)&amp;&amp;(!visited[w]))
+        {
+            DFS_AM(G,w);
+        }
+    }
+}
+
+int main()
+{
+    AMGraph G;
+    CreateUDN(G);
+    for(int i = 1;i&lt;=G.vexnum;i++)
+    {
+        cout&lt;&lt;"\n";
+        for(int j = 1;j&lt;=G.vexnum;j++)
+        {
+            cout&lt;&lt;G.arcs[i][j]&lt;&lt;" ";
+        }
+    }
+    cout&lt;&lt;"\n";
+    DFS_AM(G,1);
+    return 0;
+}
+</code></pre>
+<p>​        若要建立无向网，只需对上述算法做两处小的改动：一是初始化邻接矩阵时，将边的权值改为MaxInt；二是构造邻接矩阵时，将权值w输入。</p>
+<p>​        若要建立有向图，则不需要建立对称矩阵。</p>
+]]></content>
+  </entry>
 </search>
