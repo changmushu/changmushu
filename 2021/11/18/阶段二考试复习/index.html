@@ -20,28 +20,32 @@
     var CONFIG = {"hostname":"changmushu.github.io","root":"/changmushu.github.io/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","Sidebar Display (only for Muse | Mist), available values":"Mist - post    expand on posts automatically. Default.","display":"post","padding":18,"offset":12,"onmobile":true},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Chang&#39;s Blog">
-<meta property="og:url" content="https://changmushu.github.io/index.html">
+  <meta name="description" content="​         阶段二考试复习函数库  #include &lt;stack&gt; stack&lt;int&gt; q;    &#x2F;&#x2F;stack&lt;类型&gt; 名称 q.empty();   empty(); 堆栈为空，则返回true。 pop(); 移除栈顶元素。 push(); 在栈顶增加元素。 size(); 返回栈中元素数目。 top(); 返回栈顶元素。  #include">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据结构阶段二复习">
+<meta property="og:url" content="https://changmushu.github.io/2021/11/18/%E9%98%B6%E6%AE%B5%E4%BA%8C%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Chang&#39;s Blog">
+<meta property="og:description" content="​         阶段二考试复习函数库  #include &lt;stack&gt; stack&lt;int&gt; q;    &#x2F;&#x2F;stack&lt;类型&gt; 名称 q.empty();   empty(); 堆栈为空，则返回true。 pop(); 移除栈顶元素。 push(); 在栈顶增加元素。 size(); 返回栈中元素数目。 top(); 返回栈顶元素。  #include">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-18T13:58:19.410Z">
+<meta property="article:modified_time" content="2021-11-18T14:13:17.668Z">
 <meta property="article:author" content="Mushu Chang">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://changmushu.github.io/">
+<link rel="canonical" href="https://changmushu.github.io/2021/11/18/%E9%98%B6%E6%AE%B5%E4%BA%8C%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Chang's Blog</title>
+  <title>数据结构阶段二复习 | Chang's Blog</title>
   
 
 
@@ -191,9 +195,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -209,10 +214,9 @@
       <meta itemprop="name" content="Chang's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/changmushu.github.io/2021/11/18/%E9%98%B6%E6%AE%B5%E4%BA%8C%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0/" class="post-title-link" itemprop="url">数据结构阶段二复习</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          数据结构阶段二复习
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -226,6 +230,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
             <span class="post-meta-item" title="本文字数">
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
@@ -250,7 +261,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>​        </p>
+        <p>​        </p>
 <h1 id="阶段二考试复习"><a href="#阶段二考试复习" class="headerlink" title="阶段二考试复习"></a>阶段二考试复习</h1><p>函数库 </p>
 <pre><code class="c++">#include &lt;stack&gt;
 stack&lt;int&gt; q;    //stack&lt;类型&gt; 名称
@@ -1712,7 +1723,6 @@ int main()
 <p>​        若要建立无向网，只需对上述算法做两处小的改动：一是初始化邻接矩阵时，将边的权值改为MaxInt；二是构造邻接矩阵时，将权值w输入。</p>
 <p>​        若要建立有向图，则不需要建立对称矩阵。</p>
 
-      
     </div>
 
     
@@ -1720,278 +1730,64 @@ int main()
     
 
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+      <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 <i class="fa fa-heart"></i> 感谢阅读-------------</div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://changmushu.github.io/2021/10/03/Olympus35-S/">
+    
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/changmushu.github.io/images/avatar.gif">
-      <meta itemprop="name" content="Mushu Chang">
-      <meta itemprop="description" content="">
-    </span>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Mushu Chang
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://changmushu.github.io/2021/11/18/%E9%98%B6%E6%AE%B5%E4%BA%8C%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0/" title="数据结构阶段二复习">https://changmushu.github.io/2021/11/18/阶段二考试复习/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chang's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/changmushu.github.io/2021/10/03/Olympus35-S/" class="post-title-link" itemprop="url">Olympus35-S</a>
-        </h2>
+        
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
 
-              <time title="创建时间：2021-10-03 00:24:25 / 修改时间：15:24:48" itemprop="dateCreated datePublished" datetime="2021-10-03T00:24:25+08:00">2021-10-03</time>
+    <div class="social-list">
+
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
             </span>
 
-          
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>1k</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
+            <span class="label">RSS</span>
+          </a>
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>​        </p>
-<h1 id="一、购入"><a href="#一、购入" class="headerlink" title="一、购入"></a>一、购入</h1><p>​        九月底在某海鲜市场购得了奥林巴斯35-S，当时看上它并不是因为它多好看，但在到手后古朴的金属质感和机械发条的扭转瞬间让我着迷。网上资料不多，所以我打算写一条关于它的Blog。</p>
-<p><img src="DSC_4805.jpg" alt="DSC_4805"></p>
-<h1 id="二、关于Olympus"><a href="#二、关于Olympus" class="headerlink" title="二、关于Olympus"></a>二、关于Olympus</h1><h2 id="（一）基础简介"><a href="#（一）基础简介" class="headerlink" title="（一）基础简介"></a>（一）基础简介</h2><p>​        Olympus35-S于1955年推出，是第一款提供快速倒带杆的日本相机。它首先配备了D.Zuiko 45mm f/3.5镜头。较晚的型号有E.Zuiko 48mm f/2.8或G. Zuiko 45mm f/1.9。而我手上拿到的是G. Zuiko 42mm f/2.0。它配备了Seikosha-MX 的快门</p>
-<p><img src="DSC_4810.jpg" alt="DSC_4810"></p>
-<h3 id="1-Seikosha-MX"><a href="#1-Seikosha-MX" class="headerlink" title="1.Seikosha-MX"></a>1.Seikosha-MX</h3><p>​    <em>The Seikosha-MX is a leaf shutter made by Seikōsha, the manufacturing branch of Hattori Tokei-ten. It is an evolution of the Seikosha-Rapid, with added MX synchronization. It appeared in 1955 in #00 size and in 1956 in #00 size.</em></p>
-<p>​    <em>The <strong>Seikosha-MXL</strong> is a variant equipped with the light value system, introduced in 1956 in #00 sizeonly.</em></p>
-<p>​        目前只有B，1，2，5，10，25，50，100，200，500的快门速度。</p>
-<p><img src="DSC_4807.jpg" alt="DSC_4807"></p>
-<h2 id="（二）时代背景"><a href="#（二）时代背景" class="headerlink" title="（二）时代背景"></a>（二）时代背景</h2><p>​        第一个奥林巴斯35-S于1955年推出。日本相机业从少年时期走向成熟，生产出与西德同等质量的相机，并超过了这一时期。</p>
-<p>​    <em>A basic rangefinder, no fireworks, nice to hold and use. Controls are on the lens barrel, leaving the top bare. So-so lens, yet perfect for the casual user. On the bottom of the barrel is the external sync port, by the mode selector. Smallish finder, dim. Spool rewind crank pops out by pushing a tiny slide, assume to save user’s fingernails.</em></p>
-<h2 id="（三）使用感受"><a href="#（三）使用感受" class="headerlink" title="（三）使用感受"></a>（三）使用感受</h2><p>​        基础的测距，全金属质感，拿着很舒服，快门都是在镜头上控制。但由于时间过于久远，相机的黄斑已经黯淡，为了能保证对焦，我在取景器前安装了一片蓝色透片。黄斑一下清晰明了了起来。</p>
-<p><img src="DSC_4806.jpg" alt="DSC_4806"></p>
-<p><img src="DSC_4812.jpg" alt="DSC_4812"></p>
-
-      
     </div>
+  </div>
 
-    
-    
-    
 
-    
       <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/changmushu.github.io/2021/10/03/Olympus35-S/" rel="prev" title="Olympus35-S">
+      <i class="fa fa-chevron-left"></i> Olympus35-S
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://changmushu.github.io/2021/09/30/%E6%98%B6%E6%B2%90%E6%B2%AD/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/changmushu.github.io/images/avatar.gif">
-      <meta itemprop="name" content="Mushu Chang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chang's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/changmushu.github.io/2021/09/30/%E6%98%B6%E6%B2%90%E6%B2%AD/" class="post-title-link" itemprop="url">昶沐沭</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-09-30 23:02:58 / 修改时间：23:18:01" itemprop="dateCreated datePublished" datetime="2021-09-30T23:02:58+08:00">2021-09-30</time>
-            </span>
-
-          
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>453</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>​        在2021年9月30日晚11点，我大致完成了自己的博客的建立，但其中还有许多无法解决的，亦或是我现在没有精力去解决的问题。但至此已经心满意足，有一种自己慢慢制作小玩意的满足，并且满怀着信心想要去完善她，把她作为自己独立的一部分，情绪的一部分，在互联网之中漂流。</p>
-<p><img src="DSC_4158.jpg" alt="DSC_4158"></p>
-<p>​        这里上传自己最近拍的一张照片，本是无意拍花的影子，但一放到<em>PhotoShop</em>里面，就想着它会不会有其它不一样的变化。有鲜红的感觉，有强烈的命令感。</p>
-<p>​        一到气温下降的时候总会想到一个场景，在景中的走廊里，穿着蓝色棉服，坐在那儿看书或者睡觉，暖和到恰到好处的太阳使得一切变得奇幻而不真实，像是在梦境一般。</p>
-<p>​        反之哈尔滨的冬天也只有室内才能感受到这种阳光，白晃晃的世界以及凛冽的寒风，回想着快要逃离，无奈吧，徘徊吧。</p>
-<p>​        第一次写也不知道写些啥，毕竟能找到这个<em>Blog</em>的人应该很少吧。</p>
-<p>​        这是在某个B站UP主的视频下看到的，令人无限唏嘘，或许这就是现实吧。</p>
-<p>​        <u>“后来我会拥有更高超的演奏技巧，会见到更多更亮更圆的月亮，可是那一夜青涩的真诚与热枕再也没有回来。”</u></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://changmushu.github.io/2021/09/29/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/changmushu.github.io/images/avatar.gif">
-      <meta itemprop="name" content="Mushu Chang">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chang's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/changmushu.github.io/2021/09/29/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-29 21:41:59" itemprop="dateCreated datePublished" datetime="2021-09-29T21:41:59+08:00">2021-09-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：1985-10-26 16:15:00" itemprop="dateModified" datetime="1985-10-26T16:15:00+08:00">1985-10-26</time>
-              </span>
-
-          
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>363</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new "My New Post"
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
-</code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -2044,6 +1840,7 @@ int main()
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%B6%E6%AE%B5%E4%BA%8C%E8%80%83%E8%AF%95%E5%A4%8D%E4%B9%A0"><span class="nav-number">1.</span> <span class="nav-text">阶段二考试复习</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E3%80%81%E4%B8%B2%E4%B8%8E%E5%B9%BF%E4%B9%89%E8%A1%A8"><span class="nav-number">1.1.</span> <span class="nav-text">数组、串与广义表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4198"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">4198</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4197"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">4197</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%B2"><span class="nav-number">1.1.2.</span> <span class="nav-text">串</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4944"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">4944</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4943"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">4943</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4203"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">4203</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4941"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">4941</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4940"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">4940</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E5%AD%97%E7%AC%A6%E5%87%BA%E7%8E%B0%E9%A2%91%E5%BA%A6"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">计算字符出现频度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%80%86%E5%BA%8F%E5%AD%98%E5%82%A8"><span class="nav-number">1.1.2.7.</span> <span class="nav-text">字符串逆序存储</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91"><span class="nav-number">1.2.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4976"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">4976</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6111"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">6111</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7075"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">7075</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7077"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">7077</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7076"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">7076</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7074"><span class="nav-number">1.2.0.6.</span> <span class="nav-text">7074</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7080"><span class="nav-number">1.2.0.7.</span> <span class="nav-text">7080</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-number">1.3.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%BB%E6%8E%A5%E8%A1%A8"><span class="nav-number">1.3.1.</span> <span class="nav-text">邻接表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#7039-%E6%9C%89%E5%90%91%E5%9B%BE"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">7039(有向图)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7040-%E6%9C%89%E5%90%91%E5%9B%BE"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">7040(有向图)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7042-%E6%97%A0%E5%90%91%E5%9B%BE"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">7042(无向图)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%95%B37043-%E6%97%A0%E5%90%91%E5%9B%BE%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%81%8D%E5%8E%86%EF%BC%89"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">╳7043(无向图的建立与遍历）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6112-%E6%9C%89%E5%90%91%E5%9B%BE"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">6112(有向图)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5"><span class="nav-number">1.3.2.</span> <span class="nav-text">邻接矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%95%B3%E9%82%BB%E6%8E%A5%E7%9F%A9%E9%98%B5%E7%9A%84%E5%BB%BA%E7%AB%8B%E4%B8%8E%E9%81%8D%E5%8E%86"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">╳邻接矩阵的建立与遍历</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
